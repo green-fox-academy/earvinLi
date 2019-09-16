@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 console.log('Humpty Dumpty sat on a wall,');
 console.log('Humpty Dumpty had a great fall.');
