@@ -10,4 +10,4 @@ const newS = s.map(num => {
   return num;
 });
 
-console.log(newS);
+console.log(newS[3]);
