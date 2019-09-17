@@ -11,7 +11,6 @@ const lineCount = 4;
 // ****
 //
 // The triangle should have as many lines as lineCount is
-
 const drawTriangle = lines => {
   for (let i = 1; i <= lines; i++) console.log('*'.repeat(i));
 };
