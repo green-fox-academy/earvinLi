@@ -31,5 +31,4 @@ const diagonalMatrix = lines => {
   return targetMatrix;
 }
 
-console.log(diagonalMatrix(6).length);
-console.log(diagonalMatrix(6).forEach(line => console.log(line.join(' '))));
+diagonalMatrix(6).forEach(line => console.log(line.join(' ')));
