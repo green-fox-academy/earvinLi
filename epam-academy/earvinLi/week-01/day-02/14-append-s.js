@@ -6,8 +6,6 @@
 // - Print the result of `appendS(am)` to the console
 const am = 'dog';
 
-const appendS = str => {
-  return `${str}s`;
-};
+const appendS = str => `${str}s`;
 
 console.log(appendS(am));

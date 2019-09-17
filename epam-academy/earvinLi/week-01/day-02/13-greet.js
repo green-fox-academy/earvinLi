@@ -7,8 +7,6 @@
 // - Greet `al`
 const ai = 'EPAM';
 
-const greet = (client = 'Earvin') => {
-  console.log(`Greetings, dear ${client}.`);
-};
+const greet = (client = 'Earvin') => console.log(`Greetings, dear ${client}.`);
 
 greet(ai);

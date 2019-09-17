@@ -5,8 +5,6 @@
 // - Log the result of `doubling(ak)` to the console
 const ak = 123;
 
-const doubling = num => {
-  return num * 2;
-};
+const doubling = num => num * 2;
 
 console.log(doubling(ak));
