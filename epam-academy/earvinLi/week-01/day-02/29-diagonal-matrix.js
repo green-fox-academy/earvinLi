@@ -25,10 +25,11 @@ const diagonalMatrix = lines => {
         tempLine.push(0);
       }
     }
-    
+
     targetMatrix.push(tempLine);
   }
   return targetMatrix;
 }
 
-console.log(diagonalMatrix(4).forEach(line => console.log(line)));
+console.log(diagonalMatrix(6).length);
+console.log(diagonalMatrix(6).forEach(line => console.log(line.join(' '))));
