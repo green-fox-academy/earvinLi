@@ -12,6 +12,8 @@ for (let [key, value] of bookMap) console.log(`${value} (ISBN: ${key})`);
 bookMap.delete('978-1-60309-444-3');
 
 // Find the key of a value of a map
+// Idea from:
+// https://stackoverflow.com/questions/47135661/how-to-get-a-key-in-a-javascript-map-by-its-value
 const targetKey = [...bookMap.entries()]
   .filter(({ 1: v }) => v === 'The Lab')
   .map(([k]) => k);
