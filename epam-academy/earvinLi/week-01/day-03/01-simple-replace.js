@@ -8,3 +8,12 @@ var example = "In a dishwasher far far away";
 example = example.replace('dishwasher', 'galaxy');
 
 console.log(example)
+
+const person = {
+  name: 'Earvin',
+  age: 27,
+};
+
+const { name: something, age } = person;
+
+console.log(something);
