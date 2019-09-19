@@ -1,3 +1,5 @@
+'use strict';
+
 class Sharpie {
   constructor(color, width, inkAmount = 100.00) {
     this.color = color;
@@ -5,7 +7,7 @@ class Sharpie {
     this.inkAmount = inkAmount;
   }
 
-  use() { this.inkAmount-- }
+  use() { this.inkAmount--; }
 }
 
 const sharpieOne = new Sharpie('black', 1.5);

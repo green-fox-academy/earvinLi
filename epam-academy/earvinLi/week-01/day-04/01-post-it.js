@@ -1,3 +1,5 @@
+'use strict';
+
 class PostIt {
   constructor(backgroundColor, text, textColor) {
     this.backgroundColor = backgroundColor;

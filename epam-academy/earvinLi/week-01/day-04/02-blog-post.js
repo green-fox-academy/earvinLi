@@ -1,3 +1,5 @@
+'use strict';
+
 class BlogPost {
   constructor(authorName, title, text, publicationDate) {
     this.authorName = authorName;
