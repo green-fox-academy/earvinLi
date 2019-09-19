@@ -12,4 +12,6 @@ class Sharpie {
 
 const sharpieOne = new Sharpie('black', 1.5);
 sharpieOne.use();
-console.log(sharpieOne.inkAmount);
+// console.log(sharpieOne.inkAmount);
+
+module.exports = Sharpie;
