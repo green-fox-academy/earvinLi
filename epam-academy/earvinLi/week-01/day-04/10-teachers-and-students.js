@@ -1,7 +1,7 @@
 'use strict';
 
 class Student {
-  constructor(subject) { this.subject = subject };
+  constructor(subject) { this.subject = subject }
 
   learn() { console.log(`I'm studying ${this.subject}.`); }
 
@@ -9,7 +9,7 @@ class Student {
 }
 
 class Teacher {
-  teach(student) { student.learn(); };
+  teach(student) { student.learn(); }
 
   answer(subject) { console.log(`I'm answering my student's ${subject} question.`); }
 }
