@@ -16,13 +16,15 @@ class Animal {
 
 const animalOne = new Animal();
 
-console.log(animalOne.hunger);
+// console.log(animalOne.hunger);
 
 animalOne.eat();
 
-console.log(animalOne.hunger);
+// console.log(animalOne.hunger);
 
 animalOne.drink();
 animalOne.play();
 
-console.log(animalOne);
+// console.log(animalOne);
+
+module.exports = Animal;
