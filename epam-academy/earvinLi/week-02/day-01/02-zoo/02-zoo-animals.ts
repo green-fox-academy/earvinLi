@@ -1,4 +1,4 @@
-abstract class Animal {
+export abstract class Animal {
   name: string;
   age: number;
   numOfFeet: number;
@@ -12,7 +12,7 @@ abstract class Animal {
   getName(): string {
     return this.name;
   }
-  
+
   breed(): void {}
 }
 
