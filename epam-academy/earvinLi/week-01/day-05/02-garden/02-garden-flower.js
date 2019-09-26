@@ -1,18 +1,9 @@
-class FLower {
-  constructor(color, waterAmount = 20) {
-    this.color = color;
-    this.waterAmount = waterAmount;
+const Plant = require('./02-garden-plant.js')
+
+class Flower extends Plant {
+  constructor(color, waterAmount, waterThreshold, waterAbsorbRate) {
+    super(color, waterAmount, 5, 0.75);
   }
-
-  needWater() {
-    return this.waterAmount < 5 ? true : false;
-  }
-
-  water(water) {
-    return this.waterAmount += water * 0.75;
-  }
-
-
 }
 
-module.exports = FLower;
+module.exports = Flower;

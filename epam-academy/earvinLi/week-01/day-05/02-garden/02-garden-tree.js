@@ -1,15 +1,8 @@
-class Tree {
-  constructor(color, waterAmount = 20) {
-    this.color = color;
-    this.waterAmount = waterAmount;
-  }
+const Plant = require('./02-garden-plant.js')
 
-  needWater() {
-    return this.waterAmount < 10 ? true : false;
-  }
-
-  water(water) {
-    return this.waterAmount += water * 0.4;
+class Tree extends Plant {
+  constructor(color, waterAmount, waterThreshold, waterAbsorbRate) {
+    super(color, waterAmount, 10, 0.4);
   }
 }
 
