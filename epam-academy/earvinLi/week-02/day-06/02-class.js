@@ -41,3 +41,5 @@ class GardenES6 {
 
 const gardenTwo = new GardenES6(4, 5);
 console.log(gardenTwo.efficiency());
+
+module.exports = GardenES5;
