@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Exercise 5</title>
+    <style media="screen">
+      #childUL {
+        color: black;
+        list-style-type: disc;
+      }
+      .bluePrimary {
+        color: #1E46F5;
+      }
+      #parentUL {
+        color: #1E3EDC;
+        list-style-type: square;
+      }
+      .yellow {
+        color: #EFB742;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 class="bluePrimary">Title</h2>
+    <h2 class="yellow">Subtitle</h2>
+    <p>Lorem ipsum dolor set</p>
+    <h2 class="yellow">Food List</h2>
+    <ul id="parentUL">
+      <li>Meats</li>
+      <li>
+        Fruits
+        <ul id="childUL">
+          <li style='color: red'>Apple</li>
+          <li>Pear</li>
+          <li>Melon</li>
+        </ul>
+      </li>
+      <li>
+        Vegetables
+        <ol style='color: black'>
+          <li>Onion</li>
+          <li>Potato</li>
+          <li>Carrot</li>
+        </ol>
+      </li>
+    </ul>
+  </body>
+</html>
