@@ -1,9 +1,9 @@
-// ES5
-var uniqNumsES5 = function(arrOne, arrTwo) {
-  var allWeHave = arrOne.concat(arrTwo);
-  var uniqArr = [];
+// ES6
+var uniqNumsES5 = (arrOne, arrTwo) => {
+  const allWeHave = arrOne.concat(arrTwo);
+  const uniqArr = [];
 
-  for (ele of allWeHave) {
+  for (let ele of allWeHave) {
     if ((arrOne.indexOf(ele) !== -1 && arrTwo.indexOf(ele) === -1) || (arrOne.indexOf(ele) === -1 && arrTwo.indexOf(ele) !== -1)) {
       uniqArr.push(ele);
     }
@@ -14,11 +14,11 @@ var uniqNumsES5 = function(arrOne, arrTwo) {
 console.log(uniqNumsES5([1, 2, 5], [1, 2, 3, 4]));
 
 // ES6
-const uniqNumsES6 = (arrOne, arrTwo) => {
+const uniqNumsES7 = (arrOne, arrTwo) => {
   const allWeHave = arrOne.concat(arrTwo);
   const uniqArr = [];
 
-  for (ele of allWeHave) {
+  for (let ele of allWeHave) {
     if ((arrOne.includes(ele) && !arrTwo.includes(ele)) || (!arrOne.includes(ele) && arrTwo.includes(ele))) {
       uniqArr.push(ele);
     }
@@ -26,4 +26,4 @@ const uniqNumsES6 = (arrOne, arrTwo) => {
 
   return uniqArr;
 };
-console.log(uniqNumsES6([1, 2, 5], [1, 2, 3, 4]));
+console.log(uniqNumsES7([1, 2, 5], [1, 2, 3, 4]));

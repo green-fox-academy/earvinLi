@@ -3,7 +3,10 @@ function Set() {
 }
 
 Set.prototype.add = function(ele) {
-  if (this.set.indexOf(ele) === -1) {
+  // if (this.set.indexOf(ele) === -1) {
+  //   this.set.push(ele);
+  // }
+  if (!this.set.includes(ele)) {
     this.set.push(ele);
   }
   return this;
