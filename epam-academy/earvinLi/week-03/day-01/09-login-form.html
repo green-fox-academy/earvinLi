@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Exercise 2</title>
+    <style media="screen">
+      a {
+        align-self: flex-end;
+        color: #5D5D5D;
+        font-size: 14px;
+        margin-top: 18px;
+        outline: none;
+        text-decoration: none;
+      }
+      body {
+        background-color: #EBEBEB;
+        font-family: Helvetica, sans-serif;
+        display: flex;
+        justify-content: center;
+        /* TODO: Better way to center the form? */
+        margin-top: 125px;
+      }
+      input {
+        font-size: 24px;
+        height: 55px;
+        width: 390px;
+      }
+      label {
+        color: #5D5D5D;
+        font-size: 12px;
+        font-weight: 600;
+        margin-bottom: 12px;
+      }
+      .inputGroup {
+        display: flex;
+        flex-flow: column;
+        margin-bottom: 40px;
+      }
+      .mainContainer {
+        background-color: white;
+        padding: 40px 50px;
+      }
+      .mainTitle {
+        color: #5D5D5D;
+        font-weight: normal;
+        margin-bottom: 40px;
+      }
+      #login {
+        background-color: #333333;
+        border-radius: 25px;
+        color: white;
+        font-size: 18px;
+        height: 50px;
+        width: 150px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="mainContainer">
+      <h1 class="mainTitle">ACCOUNT LOGIN</h1>
+
+      <div class="inputGroup">
+        <label for="username">USERNAME</label>
+        <input type="text" id="username" value="">
+      </div>
+
+      <div class="inputGroup">
+        <label for="password">PASSWORD</label>
+        <input type="password" id="password" value="">
+        <a href="#">Forgot Password?</a>
+      </div>
+
+      <button type="submit" id="login">Login</button>
+    </div>
+  </body>
+</html>
