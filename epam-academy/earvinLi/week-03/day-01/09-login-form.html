@@ -23,6 +23,14 @@
         height: 55px;
         width: 390px;
       }
+      input:focus {
+        border: 1px solid green;
+        border-radius: 5px;
+        outline: none;
+      }
+      input:invalid {
+        border-color: red;
+      }
       label {
         color: #5D5D5D;
         font-size: 12px;
@@ -62,23 +70,41 @@
   </head>
   <body>
     <div class="mainContainer">
-      <h1 class="mainTitle">ACCOUNT LOGIN</h1>
+      <form novalidate>
 
-      <div class="inputGroup">
-        <label for="username">USERNAME</label>
-        <input type="text" id="username" value="">
-      </div>
+        <h1 class="mainTitle">ACCOUNT LOGIN</h1>
 
-      <div class="inputGroup">
-        <label for="password">PASSWORD</label>
-        <input type="password" id="password" value="">
-        <span class="toggleContainer"><i class="fa fa-eye" aria-hidden="true"></i></span>
-        <a href="#">Forgot Password?</a>
-      </div>
+        <div class="inputGroup">
+          <label for="username">USERNAME</label>
+          <input id="username" type="text" value="">
+          <span id="usernameError"></span>
+        </div>
 
-      <button type="submit" id="login">Login</button>
+        <div class="inputGroup">
+          <label for="password">PASSWORD</label>
+          <input id="password" type="password" value="">
+          <span class="toggleContainer"><i class="fa fa-eye" aria-hidden="true"></i></span>
+          <a href="#">Forgot Password?</a>
+        </div>
+
+        <button type="submit" id="login">Login</button>
+
+      </form>
     </div>
   </body>
 
   <script src="https://kit.fontawesome.com/520c66ff12.js" crossorigin="anonymous"></script>
+  <script type="text/javascript">
+    const form = document.getElementsByTagName('form')[0];
+    const username = document.getElementById('username');
+    const usernameError = document.querySelector('#usernameError');
+
+    form.addEventListener('submit', (event) => {
+      if (username.value === '') {
+        usernameError.innerHTML = 'I expect a username, darling!';
+      }
+
+      event.preventDefault();
+    }, false);
+  </script>
 </html>
