@@ -8,7 +8,7 @@
         align-self: flex-end;
         color: #5D5D5D;
         font-size: 14px;
-        margin-top: 18px;
+        margin-top: 36px;
         outline: none;
         text-decoration: none;
       }
@@ -17,8 +17,6 @@
         font-family: Helvetica, sans-serif;
         display: flex;
         justify-content: center;
-        /* TODO: Better way to center the form? */
-        margin-top: 125px;
       }
       input {
         font-size: 24px;
@@ -38,12 +36,19 @@
       }
       .mainContainer {
         background-color: white;
+        /* TODO: Better way to center the form? */
+        margin-top: 125px;
         padding: 40px 50px;
       }
       .mainTitle {
         color: #5D5D5D;
         font-weight: normal;
         margin-bottom: 40px;
+      }
+      .toggleContainer {
+        align-self: flex-end;
+        color: #9C9C9C;
+        margin: -36px 18px 0 0;
       }
       #login {
         background-color: #333333;
@@ -67,10 +72,13 @@
       <div class="inputGroup">
         <label for="password">PASSWORD</label>
         <input type="password" id="password" value="">
+        <span class="toggleContainer"><i class="fa fa-eye" aria-hidden="true"></i></span>
         <a href="#">Forgot Password?</a>
       </div>
 
       <button type="submit" id="login">Login</button>
     </div>
   </body>
+
+  <script src="https://kit.fontawesome.com/520c66ff12.js" crossorigin="anonymous"></script>
 </html>
