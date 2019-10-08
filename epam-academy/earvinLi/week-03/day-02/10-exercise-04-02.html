@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Exercise 4.1</title>
+    <style media="screen">
+      body {
+        margin: 0;
+      }
+      .contentSidebarContainer {
+        display: flex;
+        flex-grow: 8;
+      }
+      .mainContainer {
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+        height: 1500px;
+        margin: 70px 50px 70px;
+      }
+      .mainContent {
+        background-color: #FBD64A;
+        flex-grow: 2;
+        margin-left: 10px;
+      }
+      .navbar {
+        align-items: center;
+        background-color: #B350F7;
+        display: flex;
+        height: 60px;
+        position: fixed;
+        top: 0;
+        width: 100%;
+      }
+      .navItem {
+        background-color: #64EAFA;
+        margin-left: 10px;
+      }
+      .navItemList {
+        display: flex;
+        list-style-type: none;
+        padding-left: 40px;
+      }
+      .pageFooter {
+        background-color: #CCCCCC;
+        flex-grow: 2;
+        margin-top: 10px;
+        /* max-height: 55px; */
+      }
+      .sidebar {
+        background-color: #64D536;
+        flex-grow: 1;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar">
+      <ul class="navItemList">
+        <li class="navItem" style="height: 30px; width: 85px;"></li>
+        <li class="navItem" style="height: 30px; width: 100px;"></li>
+        <li class="navItem" style="height: 30px; width: 75px;"></li>
+        <li class="navItem" style="height: 30px; width: 90px;"></li>
+      </ul>
+    </nav>
+
+    <div class="mainContainer">
+      <div class="contentSidebarContainer">
+        <aside class="sidebar"></aside>
+        <main class="mainContent"></main>
+      </div>
+      <footer class="pageFooter"></footer>
+    </div>
+  </body>
+</html>
