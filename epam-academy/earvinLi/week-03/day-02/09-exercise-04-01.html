@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Exercise 1.1</title>
+    <style media="screen">
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+      }
+      body {
+        display: flex;
+      }
+      .contentSidebarContainer {
+        display: flex;
+        flex-grow: 1;
+      }
+      .mainContainer {
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+        margin: 20px 50px;
+      }
+      .mainContent {
+        background-color: #FBD64A;
+        flex-grow: 2;
+      }
+      .navbar {
+        align-items: center;
+        background-color: #B350F7;
+        display: flex;
+        flex-grow: 1;
+        max-height: 60px;
+      }
+      .navItem {
+        background-color: #64EAFA;
+        margin-left: 10px;
+      }
+      .navItemList {
+        display: flex;
+        list-style-type: none;
+        padding-left: 2px;
+      }
+      .sidebar {
+        background-color: #64D536;
+        flex-grow: 1;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="mainContainer">
+      <nav class="navbar">
+        <ul class="navItemList">
+          <li class="navItem" style="height: 30px; width: 100px;"></li>
+          <li class="navItem" style="height: 30px; width: 75px;"></li>
+          <li class="navItem" style="height: 30px; width: 85px;"></li>
+        </ul>
+      </nav>
+      <div class="contentSidebarContainer">
+        <main class="mainContent"></main>
+        <aside class="sidebar"></aside>
+      </div>
+    </div>
+  </body>
+</html>
