@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Exercise 4.1</title>
+    <style media="screen">
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+      }
+      body {
+        display: flex;
+        justify-content: center;
+      }
+      .contentSidebarContainer {
+        display: flex;
+        flex-grow: 4;
+      }
+      .mainContainer {
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+        margin: 30px 50px;
+        max-width: 540px;
+      }
+      .mainContent {
+        align-items: flex-end;
+        background-color: #ED3833;
+        display: flex;
+        flex-grow: 4;
+        justify-content: flex-end;
+        margin: 0 20px;
+        padding: 20px;
+      }
+      .naughtyBlackBox {
+        background-color: black;
+        height: 50px;
+        width: 50px;
+      }
+      .navbar {
+        background-color: #6DFBFB;
+        flex-grow: 1;
+      }
+      .pageFooter {
+        background-color: #2046F5;
+        flex-grow: 1;
+      }
+      .sidebar {
+        background-color: #64D536;
+        flex-grow: 1;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="mainContainer">
+      <nav class="navbar"></nav>
+      <div class="contentSidebarContainer">
+        <aside class="sidebar" style="background-color: #F5A540;"></aside>
+        <main class="mainContent">
+          <div class="naughtyBlackBox"></div>
+        </main>
+        <aside class="sidebar" style="background-color: #822B7F;"></aside>
+      </div>
+      <footer class="pageFooter"></footer>
+    </div>
+  </body>
+</html>
