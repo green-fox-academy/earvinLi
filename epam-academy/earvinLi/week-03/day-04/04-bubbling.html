@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Workshop: EventListeners</title>
+    <style>
+      html, body {
+        margin: 0;
+        padding: 0;
+      }
+      nav {
+        text-align: center;
+      }
+      button {
+        margin: 16px;
+      }
+      .img-inspector {
+        margin: 0 auto;
+        width: 500px;
+        height: 320px;
+        border: 1px solid #3a3a3a;
+        background-image: url("https://raw.githubusercontent.com/green-fox-academy/jsa-shenzhen-2019-syllabus/master/teaching-materials/event-listener/assets/mp.jpg?token=AFQN2CF3WG6FWQKP6OA523S5VAH2Y");
+        background-size: 200%;
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <button data-action="move" data-direction="up">Up</button>
+      <button data-action="move" data-direction="down">Down</button>
+      <button data-action="move" data-direction="left">Left</button>
+      <button data-action="move" data-direction="right">Right</button>
+      <button data-action="zoom" data-direction="in">Zoom in</button>
+      <button data-action="zoom" data-direction="out">Zoom out</button>
+    </nav>
+    <div class="img-inspector">
+    </div>
+
+    <!-- You can work in the html or in a separate js file. Like:
+    <script>
+      Here is an image inspector, but the buttons are not implemented yet, that will
+      be your task!
+       - the nav buttons (up, down, left, right) move the background by 10px
+       - the zoom buttons increase/decrease the image by 20%
+       - attach only two event listeners to the nav element
+         - one for navigation
+         - one for zooming
+    </script>
+    OR
+    <script src="bubbling.js"></script> -->
+
+    <script type="text/javascript">
+      const navToWorkWith = document.querySelector('nav');
+      const imgInspectorToWorkWith = document.querySelector('.img-inspector');
+
+      navToWorkWith.addEventListener('click', (event) => {
+        const dataAction = event.target.getAttribute('data-action');
+        const dataDirection = event.target.getAttribute('data-direction');
+        const imgInspectorStyle = getComputedStyle(imgInspectorToWorkWith);
+
+        if (dataAction === 'move') {
+          let imgInspectorBackgroundPositionXValue = parseInt(imgInspectorStyle.backgroundPositionX.replace('%', '')) || 0;
+          let imgInspectorBackgroundPositionYValue = parseInt(imgInspectorStyle.backgroundPositionY.replace('%', '')) || 0;
+
+          if (dataDirection === 'right' || dataDirection === 'left') {
+            if (dataDirection === 'right') {
+              imgInspectorBackgroundPositionXValue += 10;
+            } else {
+              imgInspectorBackgroundPositionXValue -= 10;
+            }
+
+            imgInspectorToWorkWith.style.backgroundPositionX = `${imgInspectorBackgroundPositionXValue}px`;
+          } else {
+            if (dataDirection === 'up') {
+              imgInspectorBackgroundPositionYValue += 10;
+            } else {
+              imgInspectorBackgroundPositionYValue -= 10;
+            }
+
+            imgInspectorToWorkWith.style.backgroundPositionY = `${imgInspectorBackgroundPositionYValue}px`;
+          }
+        }
+
+        if (dataAction === 'zoom') {
+          const imgInspectorBackgroundSize = imgInspectorStyle.backgroundSize;
+          let imgInspectorBackgroundSizeValue = parseInt(imgInspectorBackgroundSize.replace('%', ''));
+
+          if (dataDirection === 'in') {
+            imgInspectorBackgroundSizeValue += 40;
+          } else {
+            if (imgInspectorBackgroundSizeValue >= 140) {
+              imgInspectorBackgroundSizeValue -= 40;
+            }
+          }
+
+          imgInspectorToWorkWith.style.backgroundSize = `${imgInspectorBackgroundSizeValue}%`;
+        }
+      });
+    </script>
+  </body>
+</html>
