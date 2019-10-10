@@ -11,7 +11,7 @@
       <li>cat</li>
       <li>dolphin</li>
     </ul>
-    <button onClick="countItem()">How many items are in the list?</button>
+    <button>How many items are in the list?</button>
     <p class="result">dunno :(</p>
 
     <!-- You can work in the html or in a separate js file. Like:
@@ -24,10 +24,10 @@
     <script src="events-2.js"></script> -->
 
     <script type="text/javascript">
-      const countItem = () => {
+      document.querySelector('button').addEventListener('click', () => {
         const listItemCount = document.querySelectorAll('li').length;
         document.querySelector('p').innerText = listItemCount;
-      };
+      });
     </script>
   </body>
 </html>
