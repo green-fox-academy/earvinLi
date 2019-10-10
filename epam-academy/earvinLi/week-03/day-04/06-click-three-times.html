@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <script type="text/javascript">
+      const timeStart = Date.now();
+    </script>
+    <meta charset="utf-8">
+    <title>Workshop: EventListeners</title>
+  </head>
+  <body>
+    <button type="button" name="button">I expect a click!</button>
+    <p></p>
+
+    <script type="text/javascript">
+      let clickCount = 0;
+
+      document.querySelector('button').addEventListener('click', (event) => {
+        clickCount += 1;
+        const timeEllapsed = new Date(Date.now() - timeStart).getSeconds();
+
+        if (clickCount === 3 && timeEllapsed >= 5) {
+          document.querySelector('p').innerText = '5 seconds ellapsed and clicked 3 times';
+        }
+      });
+    </script>
+  </body>
+</html>
