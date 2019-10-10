@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Workshop: EventListeners</title>
+  </head>
+  <body>
+    <button type="button" name="button">I expect a click!</button>
+    <p></p>
+
+    <script type="text/javascript">
+      const throttleFunc = (fn, ms) => {
+        let timer = 0;
+        return (...args) => {
+          clearTimeout(timer);
+          timer = setTimeout(fn.bind(this, ...args), ms || 0);
+        };
+      };
+
+      document.querySelector('button').addEventListener('click', throttleFunc((event) => {
+        document.querySelector('p').innerText = '2 seconds ellapsed';
+      }, 2000));
+    </script>
+  </body>
+</html>
