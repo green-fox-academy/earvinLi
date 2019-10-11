@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Giphy API</title>
+  </head>
+  <body>
+    <script type="text/javascript">
+      const giphyAPIBase = 'https://api.giphy.com/v1/gifs/search?api_key=eiB33THuRqxxyrZsY8GoqJY2hR4jTW6r';
+      const query = 'cat';
+
+      const xhr = new XMLHttpRequest();
+      xhr.responseType = 'json';
+
+      xhr.onreadystatechange = () => {
+        if (xhr.response) {
+          xhr.response.data.forEach((ele) => {
+            const stillSmallImg = ele.images['fixed_width_small_still'].url;
+            const smallImg = ele.images['fixed_width_small'].url;
+
+            const tempImgItem = document.createElement('img');
+            tempImgItem.setAttribute('src', stillSmallImg);
+            document.querySelector('body').appendChild(tempImgItem);
+
+            tempImgItem.addEventListener('click', (event) => {
+              if (event.target.getAttribute('src') === smallImg) {
+                return event.target.setAttribute('src', stillSmallImg);
+              }
+              event.target.setAttribute('src', smallImg);
+            });
+          });
+        }
+      };
+
+      xhr.open('GET', `${giphyAPIBase}&limit=16&q=${query}`);
+      xhr.send();
+    </script>
+  </body>
+</html>
