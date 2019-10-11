@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>New York Times API</title>
+  </head>
+  <body>
+    <ul></ul>
+
+    <script type="text/javascript">
+      const newYorkTimesAPIBase = 'https://api.nytimes.com/svc/search/v2/articlesearch.json?&api-key=P307tPqLn80oVLBcfDGTHrdHL7snECP4';
+      const query = 'the moon landing by Apollo 11';
+
+      const xhr = new XMLHttpRequest();
+      xhr.responseType = 'json';
+
+      xhr.onreadystatechange = () => {
+        if (xhr.response) {
+          xhr.response.response.docs.forEach((ele) => {
+            const newsHeadline = ele.headline.main;
+            const newsSnippet = ele.snippet;
+            const newsPubDate = ele['pub_date'];
+            const newsLink = ele['web_url'];
+
+            const tempListItem = document.createElement('li');
+            const tempHeader = document.createElement('h3');
+            const tempParagraph = document.createElement('p');
+            const tempDiv = document.createElement('div');
+            const tempLink = document.createElement('a');
+
+            tempHeader.innerText = newsHeadline;
+            tempParagraph.innerText = newsSnippet;
+            tempDiv.innerText = newsPubDate;
+            tempLink.innerText = newsLink;
+            tempLink.setAttribute('href', newsLink);
+            tempLink.setAttribute('target', '_blank');
+
+            tempListItem.appendChild(tempHeader);
+            tempListItem.appendChild(tempParagraph);
+            tempListItem.appendChild(tempDiv);
+            tempListItem.appendChild(tempLink);
+            document.querySelector('ul').appendChild(tempListItem);
+          });
+        }
+      };
+
+      xhr.open('GET', `${newYorkTimesAPIBase}&limit=16&q=${query}`);
+      xhr.send();
+    </script>
+  </body>
+</html>
