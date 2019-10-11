@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Star Wars API</title>
+    <style media="screen">
+      .listContainer {
+        display: flex;
+      }
+    </style>
+  </head>
+  <body>
+    <form>
+      <label for="characterName">Enter character name</label>
+      <input id="characterName" type="text">
+      <button type="submit">search</button>
+    </form>
+
+    <div class="listContainer">
+      <ul id="characterList"></ul>
+      <ul id="movieList"></ul>
+    </div>
+
+    <script type="text/javascript">
+      const formToWorkWith = document.querySelector('form');
+      const characterList = document.getElementById('characterList');
+      const movieList = document.getElementById('movieList');
+
+      const starWarsAPIBase = 'https://swapi.co/api/people/?name=';
+
+      const addMovieListItem = (response) => {
+        const moveTitle = response.title;
+        const tempListItem = document.createElement('li');
+        tempListItem.innerText = moveTitle;
+        movieList.appendChild(tempListItem);
+      };
+
+      const showCharacterList = (response) => {
+        response.results.forEach((ele) => {
+          const characterNameToShow = ele.name;
+          const moveToShow = ele.films;
+
+          const tempListItem = document.createElement('li');
+          tempListItem.innerText = characterNameToShow;
+
+          tempListItem.addEventListener('click', () => {
+            movieList.innerHTML = '';
+
+            moveToShow.forEach((movieURL) => {
+              makeXHR(movieURL, addMovieListItem);
+            });
+          });
+
+          characterList.appendChild(tempListItem);
+        });
+      };
+
+      const makeXHR = (url, resultFunc) => {
+        const xhr = new XMLHttpRequest();
+        xhr.responseType = 'json';
+
+        xhr.onreadystatechange = () => {
+          if (xhr.response) {
+            resultFunc(xhr.response);
+          }
+        };
+
+        xhr.open('GET', url);
+        xhr.send();
+      };
+
+      formToWorkWith.addEventListener('submit', (event) => {
+        const characterNameToSearch = document.getElementById('characterName').value;
+        const urlToSearchCharacter = `${starWarsAPIBase}${characterName}`;
+        makeXHR(urlToSearchCharacter, showCharacterList);
+        event.preventDefault();
+      });
+      
+    </script>
+  </body>
+</html>
