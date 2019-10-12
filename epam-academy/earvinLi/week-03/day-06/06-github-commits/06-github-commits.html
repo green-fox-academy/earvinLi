@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Github Commits</title>
+    <style media="screen">
+      table {
+        font-size: 18px;
+        margin: 50px 0;
+      }
+      td,
+      th {
+        padding: 20px;
+      }
+      .hidden {
+        display: none;
+      }
+      #getRepoButton {
+        background-color: #1645F5;
+        border-radius: 25px;
+        color: white;
+        font-size: 24px;
+        height: 70px;
+        width: 250px;
+      }
+      #mainContainer {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="mainContainer">
+
+      <h1 id="mainTitle">Commit Messages of</h1>
+
+      <table>
+        <thead>
+          <th>Date</th>
+          <th>Message</th>
+          <th>Author</th>
+        </thead>
+        <tbody id="tableBody"></tbody>
+      </table>
+
+      <button class="hidden" id="getRepoButton" type="button">Get The Next Repo</button>
+
+    </div>
+
+    <script src="./06-github-commits.js" charset="utf-8"></script>
+  </body>
+</html>
