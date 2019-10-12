@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Stop me if you can</title>
+  </head>
+  <body>
+    <button id="cancelButton" type="button">Cancel</button>
+
+    <script type="text/javascript">
+      // Solution One
+      /* const timer = setTimeout(() => alert('5 seconds passed!'), 5000);
+      document.getElementById('cancelButton').onclick = () => clearTimeout(timer); */
+
+      // Solution Two
+      /* new Promise((resolve, reject) => {
+        setTimeout(() => resolve(), 5000);
+        document.getElementById('cancelButton').onclick = () => reject();
+      })
+        .then(() => alert('5 seconds passed!'))
+        .catch(() => {}); */
+
+      // Solution Three
+      const asyncFunc = async () => {
+        const res = await new Promise((resolve, reject) => {
+          setTimeout(() => {
+            resolve(1);
+          }, 5000);
+          document.getElementById('cancelButton').onclick = () => reject();
+        })
+          .catch(() => {});
+        if (res) alert('5 seconds passed!');
+      };
+
+      asyncFunc();
+    </script>
+  </body>
+</html>
