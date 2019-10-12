@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>What's the time?</title>
+    <style media="screen">
+      span {
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <h3 id='timeStartText'></h3>
+    <button id="resolveButton" type="button">Resolve</button>
+    <h3 id='timeEndText'></h3>
+
+    <script type="text/javascript">
+      const timeStart = Date.now();
+      const timeStartDate = new Date(Date.now());
+
+      const timeFormatOptions = {
+        dateStyle: 'full',
+        timeStyle: 'full',
+      };
+
+      const timeStartTextToWorkWith = document.getElementById('timeStartText');
+      const timeEndTextToWorkWith = document.getElementById('timeEndText');
+      const resolveButtonToWorkWith = document.getElementById('resolveButton');
+
+      const timeStartText = `Script loaded at <span>${timeStartDate.toLocaleDateString('en-US', timeFormatOptions)}</span>`;
+      timeStartTextToWorkWith.innerHTML = timeStartText;
+
+      // Solution One
+      /* resolveButtonToWorkWith.addEventListener('click', () => {
+        const elapsedTime = ((Date.now() - timeStart) / 1000).toFixed(2);
+        const timeEndText = `Button clicked after <span>${elapsedTime}</span> seconds`;
+        timeEndTextToWorkWith.innerHTML = timeEndText;
+      }); */
+
+      // Solution Two
+      /* const resolvePromise = (button) => new Promise((resolve, reject) => {
+        button.onclick = () => resolve(((Date.now() - timeStart) / 1000).toFixed(2));
+      })
+        .then(res => timeEndTextToWorkWith.innerHTML = `Button clicked after <span>${res}</span> seconds`);
+
+      resolvePromise(resolveButtonToWorkWith); */
+
+      // Solution Three
+      const resolvePromise = async (button) => {
+        const res = await new Promise((resolve, reject) => {
+          button.onclick = () => resolve(((Date.now() - timeStart) / 1000).toFixed(2));
+        });
+
+        timeEndTextToWorkWith.innerHTML = `Button clicked after <span>${res}</span> seconds`;
+      };
+
+      resolvePromise(resolveButtonToWorkWith);
+    </script>
+  </body>
+</html>
