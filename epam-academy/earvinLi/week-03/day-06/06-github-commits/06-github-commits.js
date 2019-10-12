@@ -3,7 +3,7 @@
 const getRepos = async () => {
   // GitHub Auth Headers
   const gitHubAuthHeaders = new Headers();
-  gitHubAuthHeaders.set('Authorization', `Basic ${btoa(`earvinLi:3911d7b6c3b6b016a129ef433be4d8bd0514a823`)}`);
+  gitHubAuthHeaders.set('Authorization', `Basic ${btoa(`earvinLi:9bc873a59915b665ca2a8ef161bfb416cc03373f`)}`);
 
   // Fetch repos back
   const reposJSON = await fetch('https://api.github.com/orgs/green-fox-academy/repos', { headers: gitHubAuthHeaders });

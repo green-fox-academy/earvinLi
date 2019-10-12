@@ -5,12 +5,25 @@
     <title>Github Commits</title>
     <style media="screen">
       table {
+        border: 3px solid blue;
+        border-collapse: collapse;
         font-size: 18px;
         margin: 50px 0;
+        table-layout: fixed;
+        width: 80%;
+      }
+      thead th:nth-child(1) {
+        width: 30%;
+      }
+      thead th:nth-child(2) {
+        width: 50%;
+      }
+      thead th:nth-child(3) {
+        width: 20%;
       }
       td,
       th {
-        padding: 20px;
+        padding: 6px;
       }
       .hidden {
         display: none;
