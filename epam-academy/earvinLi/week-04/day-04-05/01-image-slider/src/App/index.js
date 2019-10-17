@@ -9,10 +9,18 @@ import ImagePreviewer from './ImagePreviewer';
 function App() {
   const [images, setImages] = useState(ImageData);
   const [currentImageIndex, setCurrentImage] = useState(0);
+  console.log(currentImageIndex);
   // console.log(images[currentImageIndex]);
 
   const ImageDataThumb = ImageData.map(image => image.thumb);
-  return <ImagePreviewer imageThumbData={ImageDataThumb}/>;
+  return (
+    <div>
+      <ImagePreviewer
+        setCurrentImage={setCurrentImage}
+        imageThumbData={ImageDataThumb}
+      />
+    </div>
+  );
 }
 
 export default App;
