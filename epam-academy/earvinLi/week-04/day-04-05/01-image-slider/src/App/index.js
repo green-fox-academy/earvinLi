@@ -21,10 +21,8 @@ const styles = StyleSheet.create({
 
 // Component Definition
 function App() {
-  const [images, setImages] = useState(ImageData);
+  const [images] = useState(ImageData);
   const [currentImageIndex, setCurrentImage] = useState(0);
-  // console.log(currentImageIndex);
-  // console.log(images[currentImageIndex]);
 
   const { mainContainerStyle } = styles;
 
@@ -35,16 +33,25 @@ function App() {
   } = images[currentImageIndex];
   const ImageDataThumb = ImageData.map(image => image.thumb);
 
+  const onChangeImage = (direction) => {
+    const currentImageIndexLimit = direction === 'previous' ? 0 : 4;
+
+    currentImageIndex === currentImageIndexLimit
+      ? setCurrentImage(direction === 'previous' ? 4 : 0)
+      : setCurrentImage(direction === 'previous' ? currentImageIndex - 1 : currentImageIndex + 1);
+  }
+
   return (
     <div className={css(mainContainerStyle)}>
       <ImageViewer
         currentImageDescription={currentImageDescription}
         currentImageRegular={currentImageRegular}
         currentImageTitle={currentImageTitle}
+        changeImage={onChangeImage}
       />
       <ImagePreviewer
-        setCurrentImage={setCurrentImage}
         imageThumbData={ImageDataThumb}
+        setCurrentImage={setCurrentImage}
       />
     </div>
   );
