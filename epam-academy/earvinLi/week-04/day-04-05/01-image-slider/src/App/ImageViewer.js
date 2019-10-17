@@ -48,8 +48,8 @@ function ImageViewer(props) {
   const {
     changeImage,
     currentImageDescription,
-    currentImageRegular,
     currentImageTitle,
+    currentImageURL,
   } = props;
 
   const {
@@ -73,7 +73,7 @@ function ImageViewer(props) {
       <div className={css(viewContainerStyle)}>
         <img
           alt={currentImageTitle}
-          src={currentImageRegular}
+          src={currentImageURL}
         />
         <div className={css(textContainerStyle)}>
           <div className={css(titleStyle)}>{currentImageTitle}</div>

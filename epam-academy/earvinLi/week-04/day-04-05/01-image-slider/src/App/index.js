@@ -28,10 +28,10 @@ function App() {
 
   const {
     description: currentImageDescription,
-    regular: currentImageRegular,
     title: currentImageTitle,
+    url: currentImageURL,
   } = images[currentImageIndex];
-  const ImageDataThumb = ImageData.map(image => image.thumb);
+  const ImageDataThumb = ImageData.map(image => image.url);
 
   const onChangeImage = (direction) => {
     const currentImageIndexLimit = direction === 'previous' ? 0 : 4;
@@ -45,8 +45,8 @@ function App() {
     <div className={css(mainContainerStyle)}>
       <ImageViewer
         currentImageDescription={currentImageDescription}
-        currentImageRegular={currentImageRegular}
         currentImageTitle={currentImageTitle}
+        currentImageURL={currentImageURL}
         changeImage={onChangeImage}
       />
       <ImagePreviewer

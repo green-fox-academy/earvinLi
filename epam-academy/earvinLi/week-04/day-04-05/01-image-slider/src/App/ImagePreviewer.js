@@ -10,7 +10,10 @@ const styles = StyleSheet.create({
   imageThumbStyle: {
     border: '1px solid #ddd',
     borderRadius: 5,
+    height: 50,
+    margin: '15px 5px',
     padding: 5,
+    width: 50,
     ':hover': {
       boxShadow: '3px 3px 2px rgba(0, 0, 255, .2)',
     },
