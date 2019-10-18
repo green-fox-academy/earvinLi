@@ -21,11 +21,14 @@ const styles = StyleSheet.create({
 
 // Component Definition
 function App() {
+  // State logic
   const [images] = useState(ImageData);
   const [currentImageIndex, setCurrentImage] = useState(0);
 
+  // Style part
   const { mainContainerStyle } = styles;
 
+  // Data to use for ImageViewer and ImagePreviewer
   const {
     description: currentImageDescription,
     title: currentImageTitle,
@@ -33,6 +36,7 @@ function App() {
   } = images[currentImageIndex];
   const ImageDataThumb = ImageData.map(image => image.url);
 
+  // Logic to go to previous or next image
   const onChangeImage = (direction) => {
     const currentImageIndexLimit = direction === 'previous' ? 0 : 4;
 
