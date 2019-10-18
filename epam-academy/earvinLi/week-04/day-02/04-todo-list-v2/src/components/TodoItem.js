@@ -1,6 +1,6 @@
 // External Dependencies
-import React from 'react';
-import CheckCircleOutlineIcon from '@material-ui/icons/CheckCircleOutline';
+import React, { Component } from 'react';
+import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 import DeleteIcon from '@material-ui/icons/Delete';
 import SvgIcon from '@material-ui/core/SvgIcon';
 import {
@@ -29,36 +29,50 @@ const styles = StyleSheet.create({
   },
 });
 
-function TodoItem(props) {
-  const {
-    todoText,
-  } = props;
+class TodoItem extends Component {
+  constructor(props) {
+    super(props);
 
-  const {
-    greyColor,
-    mainContainer,
-    mainText,
-    purpleColor,
-  } = styles;
+    this.state = { doneIconColor: 'grey' };
+  }
 
-  return (
-    <div className={css(mainContainer)}>
-      <div className={css(mainText)}>{todoText}</div>
-      <div>
-        <SvgIcon>
-          <DeleteIcon
-            className={css(greyColor)}
-          />
-        </SvgIcon>
-        <SvgIcon>
-          <CheckCircleOutlineIcon
-            className={css(greyColor)}
-            onClick={() => console.log('!')}
-          />
-        </SvgIcon>
+  render() {
+    const {
+      todoText,
+    } = this.props;
+
+    const { doneIconColor } = this.state;
+
+    const {
+      greyColor,
+      mainContainer,
+      mainText,
+      purpleColor,
+    } = styles;
+
+    return (
+      <div className={css(mainContainer)}>
+        <div className={css(mainText)}>{todoText}</div>
+        <div>
+          <SvgIcon>
+            <DeleteIcon
+              className={css(greyColor)}
+            />
+          </SvgIcon>
+          <SvgIcon
+            onClick={() => {
+              const newIconColor = doneIconColor === 'grey' ? 'purple' : 'grey';
+              this.setState({ doneIconColor: newIconColor })
+            }}
+          >
+            <CheckCircleIcon
+              className={css(doneIconColor === 'grey' ? greyColor : purpleColor)}
+            />
+          </SvgIcon>
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
 }
 
 export default TodoItem;
