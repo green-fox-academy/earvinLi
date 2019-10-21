@@ -1,0 +1,7 @@
+export const COUNTER_DECREASE = 'COUNTER_DECREASE';
+export const COUNTER_INCREASE = 'COUNTER_INCREASE';
+export const COUNTER_RESET = 'COUNTER_RESET';
+export const COUNTER_SET = 'COUNTER_SET';
+export const TAG_ADD = 'TAG_ADD';
+export const TAG_REMOVE_ALL = 'TAG_REMOVE_ALL'; 
+export const TAG_REMOVE = 'TAG_REMOVE';
