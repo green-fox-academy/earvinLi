@@ -1,5 +1,15 @@
+// External Dependencies
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+// Internal Dependencies
+import SignUpFormReducer from './SignUpForm/reducer';
+import SignUpForm from './SignUpForm';
+
+ReactDOM.render((
+  <Provider store={createStore(SignUpFormReducer)}>
+    <SignUpForm />
+  </Provider>
+), document.getElementById('root'));
