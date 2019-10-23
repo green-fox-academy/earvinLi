@@ -9,6 +9,7 @@ const App = (props) => {
   const {
     fetchedMessage,
     onFetchMessage,
+    onPostMessage,
   } = props;
 
   useEffect(() => {
@@ -16,9 +17,19 @@ const App = (props) => {
   });
 
   return (
-    <ul>
-      {fetchedMessage && fetchedMessage.map(message => <li key={message.text}>{message.text}</li>)}
-    </ul>
+    <>
+      <ul>
+        {fetchedMessage && fetchedMessage.map(message => <li key={message.text}>{message.text}</li>)}
+      </ul>
+      <button onClick={async () => {
+        const postedMessageJSON = await fetch('https://stream-vanadium.glitch.me/messages', {
+          method: 'POST',
+          body: JSON.stringify({ user: "Earvin", text: "Hi there~" }),
+        });
+        const postedMessage = await postedMessageJSON.json();
+        console.log(postedMessage);
+        }}>Send</button>
+    </>
   );
 };
 
@@ -30,4 +41,5 @@ const mapStateToProps = (state) => {
 
 export default connect(mapStateToProps, {
   onFetchMessage: fetchMessage,
+  onPostMessage: postMessage,
 })(App);
