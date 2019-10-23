@@ -1,13 +1,13 @@
 // Internal Dependencies
+import { createReducer } from '../../App/RootUtilities';
 import { MESSAGE_FETCH_SUCCEED } from '../../App/ActionTypes';
 
 const INITIAL_STATE = {
   message: {},
 };
 
-const AppReducer = (state = INITIAL_STATE, action) => {
-  if (action.type === MESSAGE_FETCH_SUCCEED) return { ...state, message: action.message }
-  return state;
-};
+const fetchMessageSucceed = (state, action) => ({ ...state, message: action.message });
 
-export default AppReducer;
+export default createReducer(INITIAL_STATE, {
+  [MESSAGE_FETCH_SUCCEED]: fetchMessageSucceed,
+});
