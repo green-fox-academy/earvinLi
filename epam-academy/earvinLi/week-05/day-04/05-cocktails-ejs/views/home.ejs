@@ -27,7 +27,12 @@
           <% cocktails.map(cocktail => { %>
             <tr>
               <td>
-                <div><%= cocktail.name %></div>
+                <div>
+                  <%= cocktail.name %>
+                  <% if(!cocktail.isAlcoholic) {%>
+                    <span>(non-alcoholic)</span>
+                  <% } %>
+                </div>
                 <div><%= cocktail.contains %></div>
               </td>
               <td><%= cocktail.price %></td>
