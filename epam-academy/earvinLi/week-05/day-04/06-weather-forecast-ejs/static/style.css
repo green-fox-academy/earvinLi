@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+
+a {
+  color: black;
+  text-decoration: none;
+}
+
+body {
+  background-color: #ECF0F1;
+}
+
+.datailedViewContainer {
+  display: flex;
+}
+
+.forecastCardContainer {
+  align-items: center;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 3px 3px 5px grey;
+  display: flex;
+  height: 150px;
+  justify-content: space-around;
+  margin-bottom: 20px;
+  width: 500px;
+}
+
+.forecastCity {
+  color: #34495E;
+  font: bolder 32px 'Montserrat';
+}
+
+.forecastLocation {
+  font: 15px 'Montserrat';
+}
+
+.forecastTemp {
+  color: #34495E;
+  font: bolder 32px 'Montserrat';
+}
+
+.weatherCardContainer {
+  align-items: center;
+  background-color: white;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  height: 250px;
+  justify-content: space-around;
+  margin-right: 15px;
+  width: 150px;
+}
+
+.weatherMessage {
+  font: 12px 'Montserrat';
+}
+
+.weatherTemp {
+  font: bolder 24px 'Montserrat';
+}

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <link href="../static/style.css" rel="stylesheet" type="text/css"/>
+    <title>Todos</title>
+  </head>
+  <body>
+    <div>
+      <% forecasts.map(forecast => { %>
+        <a href='/cities/<%= forecast.city %>'>
+          <div class='forecastCardContainer'>
+            <div>
+              <div class='forecastCity'><%= forecast.city %></div>
+              <div class='forecastLocation'><%= forecast.location %></div>
+            </div>
+            <div class='forecastTemp'><%= forecast.weather[0].temp %>&deg;C</div>
+            <div><%= forecast.weather[0].icon %></div>
+          </div>
+        </a>
+      <% }) %>
+    </div>
+  </body>
+</html>
