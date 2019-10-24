@@ -3,7 +3,10 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 
 // Internal Dependencies
-import { fetchMessage } from './action';
+import {
+  fetchMessage,
+  postMessage,
+} from './action';
 
 const App = (props) => {
   const {
@@ -14,21 +17,14 @@ const App = (props) => {
 
   useEffect(() => {
     onFetchMessage();
-  });
+  }, [onFetchMessage]);
 
   return (
     <>
       <ul>
-        {fetchedMessage && fetchedMessage.map(message => <li key={message.text}>{message.text}</li>)}
+        {fetchedMessage && fetchedMessage.map((message, messageIndex) => <li key={`${messageIndex}-${message.text}`}>{message.text}</li>)}
       </ul>
-      <button onClick={async () => {
-        const postedMessageJSON = await fetch('https://stream-vanadium.glitch.me/messages', {
-          method: 'POST',
-          body: JSON.stringify({ user: "Earvin", text: "Hi there~" }),
-        });
-        const postedMessage = await postedMessageJSON.json();
-        console.log(postedMessage);
-        }}>Send</button>
+      <button onClick={() => onPostMessage('Hi there~')}>Send</button>
     </>
   );
 };
