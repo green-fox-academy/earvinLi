@@ -6,8 +6,10 @@
   </head>
   <body>
     <h1>Things to do tonight:</h1>
-    <% todos.map(todo => { %>
-      <li><%= todo %></li>
-    <% }) %>
+    <ul>
+      <% todos.map(todo => { %>
+        <li><%= todo %></li>
+      <% }) %>
+    </ul>
   </body>
 </html>

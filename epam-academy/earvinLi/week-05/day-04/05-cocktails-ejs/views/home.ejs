@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <link href="../static/style.css" rel="stylesheet" type="text/css"/>
+    <title>Todos</title>
+  </head>
+  <body>
+    <h1>Cocktails</h1>
+    <div>
+      <div id='alcoholListContainer'>
+        <a href='/'=>ALL</a>
+        <% alcoholList.map(alcohol => { %>
+          <a href='?alcohol=<%= alcohol %>'>
+            <%= alcohol.toUpperCase() %>
+          </a>
+        <% }) %>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>NAME</th>
+            <th>PRICE</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% cocktails.map(cocktail => { %>
+            <tr>
+              <td>
+                <div><%= cocktail.name %></div>
+                <div><%= cocktail.contains %></div>
+              </td>
+              <td><%= cocktail.price %></td>
+            </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>
