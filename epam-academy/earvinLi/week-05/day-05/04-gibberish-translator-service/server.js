@@ -33,5 +33,6 @@ app.post('/translate', (req, res) => {
 
   const newSentence = newWords.join(' ');
 
+  if (!text || !language) res.send({ error: 'I can\'t translate that!' });
   res.send({ translated: newSentence[0].toUpperCase() + newSentence.slice(1), lang: 'gibberish' });
 });
