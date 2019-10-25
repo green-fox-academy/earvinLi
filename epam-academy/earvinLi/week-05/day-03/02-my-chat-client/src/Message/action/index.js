@@ -21,7 +21,7 @@ export const postMessage = (message) => async (dispatch) => {
   const postedMessageJSON = await fetch('https://stream-vanadium.glitch.me/messages', {
     method: 'POST',
     body: JSON.stringify({ user: 'Earvin', text: message }),
-    header: { 'content-type': 'application/json' }
+    headers: { 'content-type': 'application/json' }
   });
   const postedMessage = await postedMessageJSON.json();
 
