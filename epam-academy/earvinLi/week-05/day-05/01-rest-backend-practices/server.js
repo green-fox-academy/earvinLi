@@ -30,3 +30,14 @@ app.get('/greeter', (req, res) => {
 
 // AppendA endpoint
 app.get('/appenda/:appendable', (req, res) => res.send({ appended: `${req.params.appendable}a` }));
+
+// Do until endpoint
+app.post('/dountil/:action', (req, res) => {
+  let result = 1;
+  for (i = 1; i <= req.body.until; i++) {
+    req.params.action === 'sum' ? result += i : result *= i;
+  }
+
+  if (req.params.action === 'sum') result -= 1;
+  res.send({ result });
+});
