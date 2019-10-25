@@ -8,19 +8,25 @@ app.post('/arrays', (req, res) => {
     numbers,
   } = req.body;
 
+  let result;
+  let errorMessage = '';
+
   switch (action) {
     case 'sum':
-      let resultSum = 0;
-      numbers.forEach(number => resultSum += number);
-      res.send({ result: resultSum });
+      result = 0;
+      numbers.forEach(number => result += number);
+      break;
     case 'multiply':
-      let resultMultiply = 1;
-      numbers.forEach(number => resultMultiply *= number);
-      res.send({ result: resultMultiply });
+      result = 1;
+      numbers.forEach(number => result *= number);
+      break;
     case 'double':
-      const resultDouble = numbers.map(number => number * 2);
-      res.send({ result: resultDouble });
+      result = numbers.map(number => number * 2);
+      break;
     default:
-      res.send({ error: 'Please provide what to do with the numbers!' });
+      errorMessage = 'Please provide what to do with the numbers!';
   }
+
+  if (!req.body.what || !req.body.numbers) res.send({ error: errorMessage });
+  res.send({ result });
 });
