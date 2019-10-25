@@ -9,8 +9,8 @@ app.get('/doubling', (req, res) => {
   const { input } = req.query;
   if (!input) res.send({ error: 'Please provide an input!' });
   res.send({
-    'received': input,
-    'result': input * 2
+    received: input,
+    result: input * 2
   });
 })
 
@@ -27,3 +27,6 @@ app.get('/greeter', (req, res) => {
 
   res.send({ welcome_message: `Oh, hi there ${name}, my dear ${title}!` });
 });
+
+// AppendA endpoint
+app.get('/appenda/:appendable', (req, res) => res.send({ appended: `${req.params.appendable}a` }));
