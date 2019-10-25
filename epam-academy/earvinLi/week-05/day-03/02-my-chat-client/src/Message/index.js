@@ -13,11 +13,12 @@ const App = (props) => {
     fetchedMessage,
     onFetchMessage,
     onPostMessage,
+    postedMessage,
   } = props;
 
   useEffect(() => {
     onFetchMessage();
-  }, [onFetchMessage]);
+  }, [ onFetchMessage, postedMessage ]);
 
   return (
     <>
@@ -30,9 +31,16 @@ const App = (props) => {
 };
 
 const mapStateToProps = (state) => {
-  const { messages } = state.Message.message;
+  const {
+    message,
+    postedMessage,
+  } = state.Message;
+  console.log(postedMessage);
 
-  return { fetchedMessage: messages };
+  return {
+    fetchedMessage: message.messages,
+    postedMessage,
+  };
 };
 
 export default connect(mapStateToProps, {
