@@ -1,0 +1,17 @@
+a {
+  color: #55288B;
+  text-decoration: none;
+}
+
+thead tr {
+  background-color: black;
+  color: white;
+}
+
+tbody tr:nth-child(odd) {
+  background-color: #EEEEEE;
+}
+
+#bookListContainer {
+  margin-bottom: 24px;
+}
