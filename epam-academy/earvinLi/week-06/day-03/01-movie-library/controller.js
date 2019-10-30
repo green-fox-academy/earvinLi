@@ -9,42 +9,29 @@ const getParam = (pathname) => {
 
 module.exports = http.createServer((req, res) => {
   const service = require('./service.js');
-  const reqUrl = url.parse(req.url, true);
+  const { pathname } = url.parse(req.url, true);
 
-  // Movies Get Endpoint
-  if (req.method === 'GET') {
-    if (reqUrl.pathname === '/movies') {
-      return service.moviesGetRequest(req, res);
-    } else {
-      const movieId = getParam(reqUrl.pathname);
-
-      if (!/^\d+$/.test(movieId)) return service.invalidRequest(req, res);
-      return service.moviesGetRequest(req, res, parseInt(movieId));
+  // Movies endpoint with param
+  if (pathname === '/movies') {
+    switch (req.method) {
+      case 'DELETE': service.moviesDeleteRequest(req, res); break;
+      case 'POST': service.moviesPostRequest(req, res); break;
+      default: service.moviesGetRequest(req, res);
     }
-  }
-  // Movies Delete Endpoint
-  else if (req.method === 'DELETE' ) {
-    if (reqUrl.pathname === '/movies') {
-      return service.moviesDeleteRequest(req, res);
-    } else {
-      const movieId = getParam(reqUrl.pathname);
+    // Movies endpoint without param
+  } else if (pathname.startsWith('/movies')) {
+    const movieId = getParam(pathname);
 
-      if (!/^\d+$/.test(movieId)) return service.invalidRequest(req, res);
-      return service.moviesDeleteRequest(req, res, parseInt(movieId));
+    if (!/^\d+$/.test(movieId)) {
+      return service.invalidRequest(req, res);
     }
-  }
-  // Movies Post Endpoint
-  else if (reqUrl.pathname === '/movies' && req.method === 'POST' ) {
-    service.moviesPostRequest(req, res);
-  }
-  // // Movies Put Endpoint
-  else if (req.method === 'PUT' ) {
-    const movieId = getParam(reqUrl.pathname);
 
-    if (!/^\d+$/.test(movieId)) return service.invalidRequest(req, res);
-    return service.moviesPutRequest(req, res, parseInt(movieId));
-  }
-  else {
+    switch (req.method) {
+      case 'DELETE': service.moviesDeleteRequest(req, res, parseInt(movieId)); break;
+      case 'PUT': service.moviesPutRequest(req, res, parseInt(movieId)); break;
+      default: service.moviesGetRequest(req, res, parseInt(movieId));
+    }
+  } else {
     service.invalidRequest(req, res);
   }
 });
