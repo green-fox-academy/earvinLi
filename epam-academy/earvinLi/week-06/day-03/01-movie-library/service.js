@@ -66,6 +66,35 @@ exports.moviesPostRequest = (req, res) => {
   });
 };
 
+exports.moviesPutRequest = (req, res, param) => {
+  let body = '';
+  req.on('data', chunk => body += chunk);
+  req.on('end', () => {
+    const postBody = JSON.parse(body);
+
+    if (!postBody.hasOwnProperty('id')
+      || !postBody.hasOwnProperty('title')
+      || !postBody.hasOwnProperty('genre')
+      || postBody.id !== param
+    ) {
+      res.statusCode = 400;
+      res.end();
+    } else if (!movieData.find(item => item.id === param)) {
+      res.statusCode = 404;
+      res.end();
+    } else {
+      movieData[param - 1] = {
+        id: postBody.id,
+        title: postBody.title,
+        genre: postBody.genre,
+      };
+      res.statusCode = 200;
+      res.setHeader('Content-type', 'application/json');
+      res.end(JSON.stringify(postBody));
+    }
+  });
+};
+
 exports.invalidRequest = (req, res) => {
   res.statusCode = 404;
   res.setHeader('Content-type', 'text/plain');

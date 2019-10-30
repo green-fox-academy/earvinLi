@@ -37,6 +37,13 @@ module.exports = http.createServer((req, res) => {
   else if (reqUrl.pathname === '/movies' && req.method === 'POST' ) {
     service.moviesPostRequest(req, res);
   }
+  // // Movies Put Endpoint
+  else if (req.method === 'PUT' ) {
+    const movieId = getParam(reqUrl.pathname);
+
+    if (!/^\d+$/.test(movieId)) return service.invalidRequest(req, res);
+    return service.moviesPutRequest(req, res, parseInt(movieId));
+  }
   else {
     service.invalidRequest(req, res);
   }
