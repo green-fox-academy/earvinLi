@@ -1,5 +1,5 @@
 // External Dependencies
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 import DeleteIcon from '@material-ui/icons/Delete';
 import SvgIcon from '@material-ui/core/SvgIcon';
@@ -8,71 +8,49 @@ import {
   StyleSheet,
 } from 'aphrodite';
 
+// Internal Dependencies
+import { TodoItemStyles } from './Theme';
+
 // Local Variables
-const styles = StyleSheet.create({
-  greyColor: {
-    color: '#b8b8b8'
-  },
-  mainContainer: {
-    alignItems: 'center',
-    display: 'flex',
-    justifyContent: 'space-between',
-  },
-  mainText: {
-    color: '#b8b8b8',
-    fontFamily: ['Lato', 'sans-serif'],
-    fontSize: 26,
-    lineHeight: 2.2,
-  },
-  purpleColor: {
-    color: '#DE69E8',
-  },
-});
+const styles = StyleSheet.create(TodoItemStyles);
 
-class TodoItem extends Component {
-  constructor(props) {
-    super(props);
+// Component Definition
+const TodoItem = (props) => {
+  const {
+    greyColor,
+    mainContainer,
+    mainText,
+    purpleColor,
+  } = styles;
 
-    this.state = { doneIconColor: 'grey' };
-  }
+  const [ doneIconColor, setDoneIconColor ] = useState('grey');
 
-  render() {
-    const {
-      todoText,
-    } = this.props;
+  const {
+    todoText,
+  } = props;
 
-    const { doneIconColor } = this.state;
-
-    const {
-      greyColor,
-      mainContainer,
-      mainText,
-      purpleColor,
-    } = styles;
-
-    return (
-      <div className={css(mainContainer)}>
-        <div className={css(mainText)}>{todoText}</div>
-        <div>
-          <SvgIcon>
-            <DeleteIcon
-              className={css(greyColor)}
-            />
-          </SvgIcon>
-          <SvgIcon
-            onClick={() => {
-              const newIconColor = doneIconColor === 'grey' ? 'purple' : 'grey';
-              this.setState({ doneIconColor: newIconColor })
-            }}
-          >
-            <CheckCircleIcon
-              className={css(doneIconColor === 'grey' ? greyColor : purpleColor)}
-            />
-          </SvgIcon>
-        </div>
+  return (
+    <div className={css(mainContainer)}>
+      <div className={css(mainText)}>{todoText}</div>
+      <div>
+        <SvgIcon>
+          <DeleteIcon
+            className={css(greyColor)}
+          />
+        </SvgIcon>
+        <SvgIcon
+          onClick={() => {
+            const newIconColor = doneIconColor === 'grey' ? 'purple' : 'grey';
+            setDoneIconColor(newIconColor);
+          }}
+        >
+          <CheckCircleIcon
+            className={css(doneIconColor === 'grey' ? greyColor : purpleColor)}
+          />
+        </SvgIcon>
       </div>
-    );
-  }
+    </div>
+  );
 }
 
 export default TodoItem;

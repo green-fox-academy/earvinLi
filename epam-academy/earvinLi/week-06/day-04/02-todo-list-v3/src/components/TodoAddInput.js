@@ -5,29 +5,13 @@ import {
   StyleSheet,
 } from 'aphrodite';
 
-// Local Variables
-const styles = StyleSheet.create({
-  inputButton: {
-    backgroundColor: '#DE69E8',
-    borderRadius: 5,
-    borderWidth: 0,
-    color: '#ffffff',
-    fontFamily: ['Lato', 'sans-serif'],
-    fontSize: 26,
-  },
-  inputField: {
-    border: '1px solid grey',
-    borderRadius: 5,
-    fontSize: 24,
-    height: 50,
-    width: 320,
-  },
-  mainContainer: {
-    display: 'flex',
-    margin: '50px 0 30px 0',
-  },
-});
+// Internal Dependencies
+import { TodoAddInputStyles } from './Theme';
 
+// Local Variables
+const styles = StyleSheet.create(TodoAddInputStyles);
+
+// Component Definition
 function TodoAddInput(props) {
   const { onAddTodo } = props;
 
