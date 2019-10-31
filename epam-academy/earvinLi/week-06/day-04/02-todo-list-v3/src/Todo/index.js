@@ -8,13 +8,13 @@ import {
 // Internal Dependencies
 import TodoAddInput from './TodoAddInput';
 import TodoList from './TodoList';
-import { AppStyles } from './Theme';
+import { TodoStyles } from '../App/Theme';
 
 // Local Variables
-const styles = StyleSheet.create(AppStyles);
+const styles = StyleSheet.create(TodoStyles);
 
 // Component Definition
-const App = () => {
+const Todo = () => {
   const {
     mainContainerStyle,
     mainTitleStyle,
@@ -40,4 +40,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default Todo;

@@ -8,7 +8,7 @@ import {
 
 // Internal Dependencies
 import { addTodoRequest } from './action';
-import { TodoAddInputStyles } from './Theme';
+import { TodoAddInputStyles } from '../App/Theme';
 
 // Local Variables
 const styles = StyleSheet.create(TodoAddInputStyles);

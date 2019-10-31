@@ -1,4 +1,4 @@
-export const AppStyles = {
+export const TodoStyles = {
   mainContainerStyle: {
     alignItems: 'center',
     backgroundColor: '#F7F7F7',

@@ -1,6 +1,6 @@
 // Internal Dependencies
-import { createReducer } from './RootUtilities';
-import { TODO_ADD_REQUEST } from './ActionTypes';
+import { createReducer } from '../../App/RootUtilities';
+import { TODO_ADD_REQUEST } from '../../App/ActionTypes';
 
 const INITIAL_STATE = {
   todoList: [

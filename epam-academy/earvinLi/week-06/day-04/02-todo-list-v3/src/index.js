@@ -9,12 +9,12 @@ import {
 import { Provider } from 'react-redux';
 
 // Internal Dependencies
-import App from './components/App';
-import AppReducer from './components/reducer';
+import Todo from './Todo';
+import TodoReducer from './Todo/reducer';
 
-const store = createStore(AppReducer, applyMiddleware(ReduxThunk));
+const store = createStore(TodoReducer, applyMiddleware(ReduxThunk));
 ReactDOM.render((
   <Provider store={store}>
-    <App />
+    <Todo />
   </Provider>
 ), document.getElementById('root'));

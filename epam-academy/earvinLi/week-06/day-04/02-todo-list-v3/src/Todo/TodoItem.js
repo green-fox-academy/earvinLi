@@ -9,7 +9,7 @@ import {
 } from 'aphrodite';
 
 // Internal Dependencies
-import { TodoItemStyles } from './Theme';
+import { TodoItemStyles } from '../App/Theme';
 
 // Local Variables
 const styles = StyleSheet.create(TodoItemStyles);
