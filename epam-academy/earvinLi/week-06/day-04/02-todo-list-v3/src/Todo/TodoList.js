@@ -1,13 +1,21 @@
 // External Dependencies
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 
 // Internal Dependencies
 import TodoItem from './TodoItem';
+import { fetchTodoRequest } from './action';
 
 // Component Definition
 const TodoList = (props) => {
-  const { todoList } = props;
+  const {
+    onFetchTodoRequest,
+    todoList,
+  } = props;
+
+  useEffect(() => {
+    onFetchTodoRequest();
+  }, [ onFetchTodoRequest ]);
 
   const renderTodoItems = (todoList) => {
     return todoList.map(todo => (
@@ -30,4 +38,6 @@ const mapStateToProps = (state) => {
   return { todoList: state.todoList };
 };
 
-export default connect(mapStateToProps, {})(TodoList);
+export default connect(mapStateToProps, {
+  onFetchTodoRequest: fetchTodoRequest,
+})(TodoList);
