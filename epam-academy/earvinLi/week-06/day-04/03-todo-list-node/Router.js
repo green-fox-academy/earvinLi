@@ -20,10 +20,26 @@ Router.post('/', (req, res) => {
 Router.delete('/:id', (req, res) => {
   const idFromParam = parseInt(req.params.id);
 
-  if (!idFromParam || !todoTable.find(item => item.id === idFromParam)) return res.status(404).send('Please provide a valid id.');
+  if (!idFromParam || !todoTable.find(item => item.id === idFromParam)) return res.status(404).end('Please provide a valid id.');
 
   todoTable = todoTable.filter(item => item.id !== idFromParam);
   res.status(204).send();
+});
+
+Router.put('/:id', (req, res) => {
+  if (!req.body.text) return res.status(400).end('Please provide some text of your todo.')
+
+  const idFromParam = parseInt(req.params.id);
+
+  if(!idFromParam || !todoTable.find(item => item.id === idFromParam)) return res.status(404).end('Please provide a valid id.');
+
+  const newTodo = {
+    id: idFromParam,
+    text: req.body.text,
+    done: req.body.done || false,
+  };
+  todoTable[idFromParam - 1] = newTodo;
+  res.status(200).send(newTodo);
 });
 
 module.exports = Router;
