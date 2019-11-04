@@ -11,7 +11,7 @@ import { makeStyles } from '@material-ui/core/styles';
 // Internal Dependencies
 import { getAppHeaderStyles } from '../App/Styles';
 
-// Local Variable
+// Local Variables
 const useStyles = makeStyles(theme => getAppHeaderStyles(theme));
 
 // Component Dependencies
