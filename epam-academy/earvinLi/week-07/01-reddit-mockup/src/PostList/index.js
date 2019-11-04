@@ -4,9 +4,14 @@ import React from 'react';
 // Material-UI Dependencies
 import List from '@material-ui/core/List';
 import Paper from '@material-ui/core/Paper';
+import { makeStyles } from '@material-ui/core/styles';
 
 // Internal Dependencies
 import PostListItem from './PostListItem';
+import { getPostListStyles } from '../App/Styles';
+
+// Local Variables
+const useStyles = makeStyles(theme => getPostListStyles(theme));
 
 // Local Variables
 const posts = [
@@ -30,8 +35,12 @@ const posts = [
 
 // Component Definition
 const PostList = () => {
+  const {
+    rootStyle,
+  } = useStyles();
+
   return (
-    <Paper>
+    <Paper className={rootStyle}>
       <List>
         {
           posts.map((post, index) => {

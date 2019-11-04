@@ -10,7 +10,6 @@ import EditIcon from '@material-ui/icons/Edit';
 import IconButton from '@material-ui/core/IconButton';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
-import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 import ListItemText from '@material-ui/core/ListItemText';
 import Tooltip from '@material-ui/core/Tooltip';
 import Typography from '@material-ui/core/Typography';
@@ -26,6 +25,7 @@ const PostListItem = (props) => {
   const {
     iconStyle,
     listItemAvatarStyle,
+    listItemSecondaryActionStyle,
     postScoreStyle,
   } = useStyles();
 
@@ -55,7 +55,7 @@ const PostListItem = (props) => {
         primary={primaryText}
         secondary={secondaryText}
       />
-      <ListItemSecondaryAction>
+    <div className={listItemSecondaryActionStyle}>
         {/* TODO: Create a shared Tooltip(Icon)Button component */}
         <Tooltip title="Modify">
           <IconButton edge='end' arial-label='modify'>
@@ -67,7 +67,7 @@ const PostListItem = (props) => {
             <DeleteIcon className={iconStyle} />
           </IconButton>
         </Tooltip>
-      </ListItemSecondaryAction>
+      </div>
     </ListItem>
     {hasDivider && <Divider variant="inset" />}
     </>
