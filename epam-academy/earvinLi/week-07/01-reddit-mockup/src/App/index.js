@@ -2,10 +2,16 @@
 import React from 'react';
 
 // Internal Dependencies
+import AppHeader from '../AppHeader';
 import PostList from '../PostList';
 
 const App = () => {
-  return <PostList />
+  return (
+    <>
+      <AppHeader />
+      <PostList />
+    </>
+  );
 };
 
 export default App;
