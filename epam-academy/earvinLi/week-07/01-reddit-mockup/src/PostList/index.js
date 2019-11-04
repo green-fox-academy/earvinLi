@@ -3,6 +3,7 @@ import React from 'react';
 
 // Material-UI Dependencies
 import List from '@material-ui/core/List';
+import Paper from '@material-ui/core/Paper';
 
 // Internal Dependencies
 import PostListItem from './PostListItem';
@@ -30,33 +31,38 @@ const posts = [
 // Component Definition
 const PostList = () => {
   return (
-    <List>
-      {
-        posts.map(post => {
-          const {
-            owner,
-            score,
-            title,
-            timestamp,
-          } = post;
+    <Paper>
+      <List>
+        {
+          posts.map((post, index) => {
+            const {
+              id,
+              owner,
+              score,
+              title,
+              timestamp,
+            } = post;
 
-          const timeText = new Date(timestamp).toLocaleDateString('en-US', {
-            dateStyle: 'long',
-            timeStyle: 'medium',
-          });
-          const timeOwnerText = `submitted on ${timeText} by ${owner}`;
-          const scoreText = score < 1000 ? score : `${score / 1000}k`;
+            const timeText = new Date(timestamp).toLocaleDateString('en-US', {
+              dateStyle: 'long',
+              timeStyle: 'medium',
+            });
+            const timeOwnerText = `submitted on ${timeText} by ${owner}`;
+            const scoreText = score < 1000 ? score : `${score / 1000}k`;
 
-          return (
-            <PostListItem
-              postScore={scoreText}
-              primaryText={title}
-              secondaryText={timeOwnerText}
-            />
-          );
-        })
-      }
-    </List>
+            return (
+              <PostListItem
+                hasDivider={index !== posts.length - 1}
+                key={`${id}-${title}`}
+                postScore={scoreText}
+                primaryText={title}
+                secondaryText={timeOwnerText}
+              />
+            );
+          })
+        }
+      </List>
+    </Paper>
   );
 };
 

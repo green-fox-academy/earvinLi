@@ -30,6 +30,7 @@ const PostListItem = (props) => {
   } = useStyles();
 
   const {
+    hasDivider,
     postScore,
     primaryText,
     secondaryText,
@@ -39,14 +40,16 @@ const PostListItem = (props) => {
     <>
     <ListItem>
       <ListItemAvatar className={listItemAvatarStyle}>
-        <ArrowDropUpIcon className={iconStyle} />
-        <Typography
-          className={postScoreStyle}
-          variant="body2"
-        >
-          {postScore}
-        </Typography>
-        <ArrowDropDownIcon className={iconStyle} />
+        <div>
+          <ArrowDropUpIcon className={iconStyle} />
+          <Typography
+            className={postScoreStyle}
+            variant="body2"
+          >
+            {postScore}
+          </Typography>
+          <ArrowDropDownIcon className={iconStyle} />
+        </div>
       </ListItemAvatar>
       <ListItemText
         primary={primaryText}
@@ -66,7 +69,7 @@ const PostListItem = (props) => {
         </Tooltip>
       </ListItemSecondaryAction>
     </ListItem>
-    <Divider variant="inset" />
+    {hasDivider && <Divider variant="inset" />}
     </>
   );
 };
