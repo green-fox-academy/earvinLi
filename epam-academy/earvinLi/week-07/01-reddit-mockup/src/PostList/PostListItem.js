@@ -40,16 +40,14 @@ const PostListItem = (props) => {
     <>
     <ListItem>
       <ListItemAvatar className={listItemAvatarStyle}>
-        <div>
-          <ArrowDropUpIcon className={iconStyle} />
-          <Typography
-            className={postScoreStyle}
-            variant="body2"
-          >
-            {postScore}
-          </Typography>
-          <ArrowDropDownIcon className={iconStyle} />
-        </div>
+        <ArrowDropUpIcon className={iconStyle} />
+        <Typography
+          className={postScoreStyle}
+          variant="body2"
+        >
+          {postScore}
+        </Typography>
+        <ArrowDropDownIcon className={iconStyle} />
       </ListItemAvatar>
       <ListItemText
         primary={primaryText}

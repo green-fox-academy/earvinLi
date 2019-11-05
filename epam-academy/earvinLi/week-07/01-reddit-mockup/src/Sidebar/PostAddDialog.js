@@ -1,5 +1,6 @@
 // External Dependencies
 import React, { useState } from 'react';
+import { connect } from 'react-redux';
 
 // Material-UI Dependencies
 import Button from '@material-ui/core/Button';
@@ -10,19 +11,23 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import TextField from '@material-ui/core/TextField';
 
+// Internal Dependencies
+import { addPost } from '../PostList/action';
+
 // Component Definition
 const PostAddDialog = (props) => {
   // TODO: Use Redux to handle the dialog visibility
   const {
     isOpen,
-    setIsOpen,
+    onAddPost,
+    onSetIsOpen,
   } = props;
 
   const [ inputValues, setInputValues ] = useState({});
 
   const onCloseDialog = () => {
     setInputValues({});
-    setIsOpen(false);
+    onSetIsOpen(false);
   };
 
   const onChangeInputValue = event => setInputValues({
@@ -50,6 +55,7 @@ const PostAddDialog = (props) => {
         multiline
         name={name}
         onChange={onChangeInputValue}
+        required
         type="text"
         value={value}
       />
@@ -71,10 +77,20 @@ const PostAddDialog = (props) => {
       </DialogContent>
       <DialogActions>
         <Button onClick={onCloseDialog}>Cancel</Button>
-        <Button onClick={onCloseDialog}>Submit</Button>
+      <Button
+        disabled={!inputValues.title || !inputValues.url}
+        onClick={() => {
+          onAddPost(inputValues);
+          onCloseDialog();
+        }}
+      >
+        Submit
+      </Button>
       </DialogActions>
     </Dialog>
   );
 };
 
-export default PostAddDialog;
+export default connect(null, {
+  onAddPost: addPost,
+})(PostAddDialog);

@@ -36,7 +36,7 @@ const Sidebar = () => {
       </Paper>
       <PostAddDialog
         isOpen={isOpen}
-        setIsOpen={setIsOpen}
+        onSetIsOpen={setIsOpen}
       />
     </>
   );

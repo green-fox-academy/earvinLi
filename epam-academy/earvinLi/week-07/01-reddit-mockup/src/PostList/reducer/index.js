@@ -1,10 +1,19 @@
 // Internal Dependencies
 import { createReducer } from '../../App/RootUtilities';
-import { FETCH_POSTS } from '../../App/ActionTypes';
+import {
+  ADD_POST,
+  FETCH_POSTS,
+} from '../../App/ActionTypes';
 
 const INITIAL_STATE = {
+  postedPost: {},
   posts: [],
 };
+
+const addPost = (state, action) => ({
+  ...state,
+  postedPost: action.postedPost,
+});
 
 const fetchPosts = (state, action) => ({
   ...state,
@@ -12,5 +21,6 @@ const fetchPosts = (state, action) => ({
 });
 
 export default createReducer(INITIAL_STATE, {
+  [ADD_POST]: addPost,
   [FETCH_POSTS]: fetchPosts,
 });

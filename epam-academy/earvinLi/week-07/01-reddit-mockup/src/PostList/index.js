@@ -24,11 +24,12 @@ const PostList = (props) => {
   const {
     fetchedPosts,
     onFetchPosts,
+    postedPost,
   } = props;
 
   useEffect(() => {
     onFetchPosts();
-  }, [ onFetchPosts ]);
+  }, [ onFetchPosts, postedPost ]);
 
   const renderPostItems = () => fetchedPosts.map((post, index) => {
     const {
@@ -39,11 +40,11 @@ const PostList = (props) => {
       timestamp,
     } = post;
 
-    const timeText = new Date(timestamp).toLocaleDateString('en-US', {
+    const timeText = new Date(timestamp * 1000).toLocaleDateString('en-US', {
       dateStyle: 'long',
       timeStyle: 'medium',
     });
-    const timeOwnerText = `submitted on ${timeText} by ${owner}`;
+    const timeOwnerText = `submitted on ${timeText} by ${owner || 'Anonymous'}`;
     const scoreText = score < 1000 ? score : `${score / 1000}k`;
 
     return (
@@ -66,9 +67,17 @@ const PostList = (props) => {
   );
 };
 
-const mapStateToProps = (state) => ({
-  fetchedPosts: state.PostList.posts,
-});
+const mapStateToProps = (state) => {
+  const {
+    postedPost,
+    posts,
+  } = state.PostList;
+
+  return {
+    fetchedPosts: posts,
+    postedPost,
+  };
+};
 
 export default connect(mapStateToProps, {
   onFetchPosts: fetchPosts,
