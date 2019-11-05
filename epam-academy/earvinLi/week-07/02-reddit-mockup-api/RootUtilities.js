@@ -1,3 +1,6 @@
+// Query Statement Helpers
+const selectLastInsertRow = 'SELECT * FROM post WHERE id = LAST_INSERT_ID()';
+
 // MySQL Query Helper
 const mysqlPromisedQuery = (mysqlConnection, queryStatement, queryInput = []) =>
   new Promise((resolve, reject) => {
@@ -8,4 +11,5 @@ const mysqlPromisedQuery = (mysqlConnection, queryStatement, queryInput = []) =>
 
   module.exports = {
     mysqlPromisedQuery,
+    selectLastInsertRow,
   };
