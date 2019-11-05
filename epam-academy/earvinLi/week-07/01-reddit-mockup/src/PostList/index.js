@@ -1,5 +1,5 @@
 // External Dependencies
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 
 // Material-UI Dependencies
@@ -9,6 +9,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 // Internal Dependencies
 import PostListItem from './PostListItem';
+import { fetchPosts } from './action';
 import { getPostListStyles } from '../App/Styles';
 
 // Local Variables
@@ -22,7 +23,12 @@ const PostList = (props) => {
 
   const {
     fetchedPosts,
+    onFetchPosts,
   } = props;
+
+  useEffect(() => {
+    onFetchPosts();
+  }, [ onFetchPosts ]);
 
   const renderPostItems = () => fetchedPosts.map((post, index) => {
     const {
@@ -64,4 +70,6 @@ const mapStateToProps = (state) => ({
   fetchedPosts: state.PostList.posts,
 });
 
-export default connect(mapStateToProps, {})(PostList);
+export default connect(mapStateToProps, {
+  onFetchPosts: fetchPosts,
+})(PostList);
