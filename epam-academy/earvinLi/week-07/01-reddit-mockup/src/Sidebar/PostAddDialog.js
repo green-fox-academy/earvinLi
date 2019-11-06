@@ -76,8 +76,9 @@ const PostAddDialog = (props) => {
         {textFields}
       </DialogContent>
       <DialogActions>
-        <Button onClick={onCloseDialog}>Cancel</Button>
+        <Button color="primary" onClick={onCloseDialog}>Cancel</Button>
       <Button
+        color="primary"
         disabled={!inputValues.title || !inputValues.url}
         onClick={() => {
           onAddPost(inputValues);

@@ -31,8 +31,8 @@ const AppHeader = () => {
           <Typography className={titleStyle} variant="h6">
             Reddit Mockup
           </Typography>
-          <Button className={buttonStyle}>Sign In</Button>
-          <Button className={buttonStyle}>Sign Up</Button>
+          <Button className={buttonStyle} color="primary">Sign In</Button>
+          <Button className={buttonStyle} color="primary">Sign Up</Button>
         </ToolBar>
       </AppBar>
       <img

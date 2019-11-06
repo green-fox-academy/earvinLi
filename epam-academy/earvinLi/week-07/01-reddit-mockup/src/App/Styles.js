@@ -51,7 +51,6 @@ export const getPostListItemStyles = (theme) => ({
 
 export const getSidebarStyles = (theme) => ({
   buttonStyle: {
-    backgroundColor: '#4AA3DF',
     width: '100%',
   },
   rootStyle: {
