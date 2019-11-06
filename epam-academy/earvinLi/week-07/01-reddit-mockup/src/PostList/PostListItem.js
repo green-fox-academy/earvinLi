@@ -7,15 +7,14 @@ import ArrowDropUpIcon from '@material-ui/icons/ArrowDropUp';
 import DeleteIcon from '@material-ui/icons/Delete';
 import Divider from '@material-ui/core/Divider';
 import EditIcon from '@material-ui/icons/Edit';
-import IconButton from '@material-ui/core/IconButton';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import ListItemText from '@material-ui/core/ListItemText';
-import Tooltip from '@material-ui/core/Tooltip';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 
 // Internal Dependencies
+import TooltippedIconButton from '../SharedUnits/TooltippedIconButton';
 import { getPostListItemStyles } from '../App/Styles';
 
 // Local Variables
@@ -54,20 +53,23 @@ const PostListItem = (props) => {
         secondary={secondaryText}
       />
     <div className={listItemSecondaryActionStyle}>
-        {/* TODO: Create a shared Tooltip(Icon)Button component */}
-        <Tooltip title="Modify">
-          <IconButton edge='end' arial-label='modify'>
-            <EditIcon className={iconStyle} />
-          </IconButton>
-        </Tooltip>
-        <Tooltip title="Remove">
-          <IconButton edge='end' arial-label='remove'>
-            <DeleteIcon className={iconStyle} />
-          </IconButton>
-        </Tooltip>
+        <TooltippedIconButton
+          arialLabel='modify'
+          edge='end'
+          title="Modify"
+        >
+          <EditIcon className={iconStyle} />
+        </TooltippedIconButton>
+        <TooltippedIconButton
+          arialLabel='remove'
+          edge='end'
+          title="Remove"
+        >
+          <DeleteIcon className={iconStyle} />
+        </TooltippedIconButton>
       </div>
     </ListItem>
-    {hasDivider && <Divider variant="inset" />}
+    {hasDivider && <Divider />}
     </>
   );
 };
