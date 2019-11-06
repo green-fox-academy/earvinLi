@@ -1,5 +1,6 @@
 // External Dependencies
 import React from 'react';
+import { connect } from 'react-redux';
 
 // Material-UI Dependencies
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
@@ -16,6 +17,7 @@ import { makeStyles } from '@material-ui/core/styles';
 // Internal Dependencies
 import TooltippedIconButton from '../SharedUnits/TooltippedIconButton';
 import { getPostListItemStyles } from '../App/Styles';
+import { votePost } from './action';
 
 // Local Variables
 const useStyles = makeStyles(theme => getPostListItemStyles(theme));
@@ -30,6 +32,8 @@ const PostListItem = (props) => {
 
   const {
     hasDivider,
+    id,
+    onVotePost,
     postScore,
     primaryText,
     secondaryText,
@@ -39,14 +43,22 @@ const PostListItem = (props) => {
     <>
     <ListItem>
       <ListItemAvatar className={listItemAvatarStyle}>
-        <ArrowDropUpIcon className={iconStyle} />
-        <Typography
-          className={postScoreStyle}
-          variant="body2"
-        >
-          {postScore}
-        </Typography>
-        <ArrowDropDownIcon className={iconStyle} />
+        <>
+          <ArrowDropUpIcon
+            className={iconStyle}
+            onClick={() => onVotePost(id, 'upvote')}
+          />
+          <Typography
+            className={postScoreStyle}
+            variant="body2"
+          >
+            {postScore}
+          </Typography>
+          <ArrowDropDownIcon
+            className={iconStyle}
+            onClick={() => onVotePost(id, 'downvote')}
+          />
+        </>
       </ListItemAvatar>
       <ListItemText
         primary={primaryText}
@@ -74,4 +86,6 @@ const PostListItem = (props) => {
   );
 };
 
-export default PostListItem;
+export default connect(null, {
+  onVotePost: votePost,
+})(PostListItem);

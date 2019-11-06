@@ -50,6 +50,7 @@ const PostList = (props) => {
     return (
       <PostListItem
         hasDivider={index !== fetchedPosts.length - 1}
+        id={id}
         key={`${id}-${title}`}
         postScore={scoreText}
         primaryText={title}
