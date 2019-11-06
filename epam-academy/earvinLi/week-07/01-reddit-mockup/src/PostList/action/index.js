@@ -2,10 +2,12 @@
 // import { createActionCreator } from '../../App/RootUtilities';
 import {
   ADD_POST,
+  DELETE_POST,
   FETCH_POSTS,
   VOTE_POST,
 } from '../../App/ActionTypes';
 
+// TODO: Create helper functions to simplify the following fetches
 export const addPost = (post) => async (dispatch) => {
   const postedPostJSON = await fetch('http://localhost:8081/posts', {
     body: JSON.stringify(post),
@@ -17,6 +19,16 @@ export const addPost = (post) => async (dispatch) => {
   dispatch({ type: ADD_POST, postedPost });
 };
 
+export const deletePost = (postId) => async (dispatch) => {
+  const deletedPostJSON = await fetch(`http://localhost:8081/posts/${postId}`, {
+    method: 'DELETE',
+    headers: { 'content-type': 'application/json' },
+  });
+  const deletedPost = await deletedPostJSON.json();
+
+  dispatch({ type: DELETE_POST, deletedPost });
+};
+
 export const fetchPosts = () => async (dispatch) => {
   const fetchedPostsJSON = await fetch('http://localhost:8081/posts');
   const fetchedPosts = await fetchedPostsJSON.json();
@@ -26,11 +38,11 @@ export const fetchPosts = () => async (dispatch) => {
 
 export const votePost = (postId, opinion) => async (dispatch) => {
   const votePostURL = `http://localhost:8081/posts/${postId}?opinion=${opinion}`;
-  const postedPostJSON = await fetch(votePostURL, {
+  const votedPostJSON = await fetch(votePostURL, {
     method: 'PUT',
     headers: { 'content-type': 'application/json' },
   });
-  const postedPost = await postedPostJSON.json();
+  const votedPost = await votedPostJSON.json();
 
-  dispatch({ type: VOTE_POST, postedPost });
+  dispatch({ type: VOTE_POST, votedPost });
 };

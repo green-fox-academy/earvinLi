@@ -11,12 +11,17 @@ const TooltippedIconButton = (props) => {
     arialLabel,
     children,
     edge,
+    onClick,
     title,
   } = props;
 
   return (
     <Tooltip title={title}>
-      <IconButton arial-label={arialLabel} edge={edge}>
+      <IconButton
+        arial-label={arialLabel}
+        edge={edge}
+        onClick={onClick}
+      >
         {children}
       </IconButton>
     </Tooltip>

@@ -17,7 +17,10 @@ import { makeStyles } from '@material-ui/core/styles';
 // Internal Dependencies
 import TooltippedIconButton from '../SharedUnits/TooltippedIconButton';
 import { getPostListItemStyles } from '../App/Styles';
-import { votePost } from './action';
+import {
+  deletePost,
+  votePost,
+} from './action';
 
 // Local Variables
 const useStyles = makeStyles(theme => getPostListItemStyles(theme));
@@ -33,6 +36,7 @@ const PostListItem = (props) => {
   const {
     hasDivider,
     id,
+    onDeletePost,
     onVotePost,
     postScore,
     primaryText,
@@ -75,6 +79,7 @@ const PostListItem = (props) => {
         <TooltippedIconButton
           arialLabel='remove'
           edge='end'
+          onClick={() => onDeletePost(id)}
           title="Remove"
         >
           <DeleteIcon className={iconStyle} />
@@ -87,5 +92,6 @@ const PostListItem = (props) => {
 };
 
 export default connect(null, {
+  onDeletePost: deletePost,
   onVotePost: votePost,
 })(PostListItem);

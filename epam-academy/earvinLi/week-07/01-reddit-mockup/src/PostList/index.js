@@ -23,13 +23,16 @@ const PostList = (props) => {
 
   const {
     fetchedPosts,
+    deletedPost,
     onFetchPosts,
     postedPost,
+    votedPost,
   } = props;
 
   useEffect(() => {
     onFetchPosts();
-  }, [ onFetchPosts, postedPost ]);
+    // TODO: Use one single state to handle update monitoring
+  }, [ deletedPost, onFetchPosts, postedPost, votedPost ]);
 
   const renderPostItems = () => fetchedPosts.map((post, index) => {
     const {
