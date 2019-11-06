@@ -1,5 +1,5 @@
 // External Dependencies
-const Router = require('express').Router();
+const PostsRouter = require('express').Router();
 
 // Internal Dependencies
 const mysqlConnection = require('./Database');
@@ -9,7 +9,7 @@ const {
 } = require('./RootUtilities');
 
 // GET Endpoint to get all the posts
-Router.get('/', async (req, res) => {
+PostsRouter.get('/', async (req, res) => {
   const queryStatement = 'SELECT * FROM post';
 
   const fetchedPosts = await mysqlPromisedQuery(mysqlConnection, queryStatement)
@@ -19,7 +19,7 @@ Router.get('/', async (req, res) => {
 });
 
 // POST Endpoint to add a new post
-Router.post('/', async (req, res) => {
+PostsRouter.post('/', async (req, res) => {
   const {
     title,
     url,
@@ -37,21 +37,19 @@ Router.post('/', async (req, res) => {
   res.status(201).send(postedPost);
 });
 
-// PUT Endpoint to find a post by its id and upvote or downvote its score
-Router.put('/:id', async (req, res) => {
+// DELETE Endpoint to delete a post
+PostsRouter.delete('/:id', async (req, res) => {
   const idFromParams = parseInt(req.params.id);
-  const { opinion } = req.query;
   const queryInput = [ idFromParams ];
+  const queryStatement = `DELETE FROM post WHERE id = ?`;
 
-  const queryStatement = `UPDATE post SET score = score ${opinion === 'upvote' ? '+ 1' : '- 1'} WHERE id = ?`;
+  const postToDelete = await mysqlPromisedQuery(mysqlConnection, 'SELECT * FROM post WHERE id = ?', queryInput)
+    .catch((err) => res.status(500).end(err));
 
   await mysqlPromisedQuery(mysqlConnection, queryStatement, queryInput)
     .catch((err) => res.status(500).end(err));
 
-  const postedPost = await mysqlPromisedQuery(mysqlConnection, 'SELECT * FROM post WHERE id = ?', queryInput)
-    .catch((err) => res.status(500).end(err));
-
-  res.send(postedPost);
+  res.send(postToDelete);
 });
 
-module.exports = Router;
+module.exports = PostsRouter;
