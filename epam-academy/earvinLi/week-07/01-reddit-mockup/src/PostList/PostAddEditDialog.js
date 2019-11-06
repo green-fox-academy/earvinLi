@@ -13,21 +13,22 @@ import TextField from '@material-ui/core/TextField';
 
 // Internal Dependencies
 import { addPost } from '../PostList/action';
+import { closePostAddEditDialog } from '../UserInteraction/action';
 
 // Component Definition
-const PostAddDialog = (props) => {
+const PostAddEditDialog = (props) => {
   // TODO: Use Redux to handle the dialog visibility
   const {
-    isOpen,
     onAddPost,
-    onSetIsOpen,
+    onClosePostAddEditDialog,
+    postAddEditDialogIsOpen,
   } = props;
 
   const [ inputValues, setInputValues ] = useState({});
 
   const onCloseDialog = () => {
     setInputValues({});
-    onSetIsOpen(false);
+    onClosePostAddEditDialog();
   };
 
   const onChangeInputValue = event => setInputValues({
@@ -66,7 +67,7 @@ const PostAddDialog = (props) => {
     <Dialog
       aria-labelledby="form-dialog-title"
       onClose={onCloseDialog}
-      open={isOpen}
+      open={postAddEditDialogIsOpen}
     >
       <DialogTitle id="form-dialog-title">Submit A New Post</DialogTitle>
       <DialogContent>
@@ -82,7 +83,7 @@ const PostAddDialog = (props) => {
         disabled={!inputValues.title || !inputValues.url}
         onClick={() => {
           onAddPost(inputValues);
-          onCloseDialog();
+          onClosePostAddEditDialog();
         }}
       >
         Submit
@@ -92,6 +93,11 @@ const PostAddDialog = (props) => {
   );
 };
 
-export default connect(null, {
+const mapStateToProps = (state) => ({
+  postAddEditDialogIsOpen: state.UserInteraction.postAddEditDialogIsOpen,
+});
+
+export default connect(mapStateToProps, {
   onAddPost: addPost,
-})(PostAddDialog);
+  onClosePostAddEditDialog: closePostAddEditDialog,
+})(PostAddEditDialog);

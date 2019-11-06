@@ -21,6 +21,7 @@ import {
   deletePost,
   votePost,
 } from './action';
+import { openPostAddEditDialog } from '../UserInteraction/action';
 
 // Local Variables
 const useStyles = makeStyles(theme => getPostListItemStyles(theme));
@@ -37,6 +38,7 @@ const PostListItem = (props) => {
     hasDivider,
     id,
     onDeletePost,
+    onOpenPostAddEditDialog,
     onVotePost,
     postScore,
     primaryText,
@@ -72,6 +74,7 @@ const PostListItem = (props) => {
         <TooltippedIconButton
           arialLabel='modify'
           edge='end'
+          onClick={() => onOpenPostAddEditDialog()}
           title="Modify"
         >
           <EditIcon className={iconStyle} />
@@ -93,5 +96,6 @@ const PostListItem = (props) => {
 
 export default connect(null, {
   onDeletePost: deletePost,
+  onOpenPostAddEditDialog: openPostAddEditDialog,
   onVotePost: votePost,
 })(PostListItem);

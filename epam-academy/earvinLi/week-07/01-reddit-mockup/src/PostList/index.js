@@ -8,6 +8,7 @@ import Paper from '@material-ui/core/Paper';
 import { makeStyles } from '@material-ui/core/styles';
 
 // Internal Dependencies
+import PostAddEditDialog from './PostAddEditDialog';
 import PostListItem from './PostListItem';
 import { fetchPosts } from './action';
 import { getPostListStyles } from '../App/Styles';
@@ -63,11 +64,14 @@ const PostList = (props) => {
   });
 
   return (
-    <Paper className={rootStyle}>
-      <List>
-        {renderPostItems()}
-      </List>
-    </Paper>
+    <>
+      <Paper className={rootStyle}>
+        <List>
+          {renderPostItems()}
+        </List>
+      </Paper>
+      <PostAddEditDialog />
+    </>
   );
 };
 
