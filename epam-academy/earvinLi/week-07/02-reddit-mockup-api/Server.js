@@ -4,8 +4,10 @@ const cors = require('cors');
 const express = require('express');
 
 // Internal Dependencies
-const PostsRouter = require('./PostsRouter');
-const PostVoteRouter = require('./PostVoteRouter');
+const PostGetRouter = require('./PostGetRouter');
+const PostPostRouter = require('./PostPostRouter');
+const PostPutRouter = require('./PostPutRouter');
+const PostDeleteRouter = require('./PostDeleteRouter');
 
 // Local Variables
 const PORT = process.env.PORT;
@@ -19,7 +21,9 @@ Server.use(cors(corsOptions));
 Server.use(express.json());
 
 // Server Routes Configuration
-Server.use('/posts', PostsRouter);
-Server.use('/posts', PostVoteRouter);
+Server.use('/posts', PostGetRouter);
+Server.use('/posts', PostPostRouter);
+Server.use('/posts', PostPutRouter);
+Server.use('/posts', PostDeleteRouter);
 
 Server.listen(PORT, () => console.log(`Server running at ${PORT}.`));
