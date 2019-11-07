@@ -6,4 +6,4 @@ import {
 } from '../../App/ActionTypes';
 
 export const closePostAddEditDialog = createActionCreator(CLOSE_POST_ADD_EDIT_DIALOG);
-export const openPostAddEditDialog = createActionCreator(OPEN_POST_ADD_EDIT_DIALOG);
+export const openPostAddEditDialog = createActionCreator(OPEN_POST_ADD_EDIT_DIALOG, 'updateType', 'updateTargetId');

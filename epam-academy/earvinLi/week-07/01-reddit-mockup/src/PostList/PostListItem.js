@@ -74,7 +74,7 @@ const PostListItem = (props) => {
         <TooltippedIconButton
           arialLabel='modify'
           edge='end'
-          onClick={() => onOpenPostAddEditDialog()}
+          onClick={() => onOpenPostAddEditDialog('edit', id)}
           title="Modify"
         >
           <EditIcon className={iconStyle} />
