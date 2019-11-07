@@ -27,7 +27,6 @@ PostPutRouter.put('/:id', async (req, res) => {
       WHERE id = ?
     `;
   }
-  console.log(queryStatement);
 
   await mysqlPromisedQuery(mysqlConnection, queryStatement, queryInput)
     .catch((err) => res.status(500).end(err));

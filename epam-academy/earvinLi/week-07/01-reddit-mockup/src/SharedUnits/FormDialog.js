@@ -1,5 +1,5 @@
 // External Dependencies
-import React, { useState } from 'react';
+import React from 'react';
 
 // Material-UI Dependencies
 import Button from '@material-ui/core/Button';
@@ -13,7 +13,9 @@ import TextField from '@material-ui/core/TextField';
 // Component Definition
 const FormDialog = (props) => {
   const {
+    disabled,
     isOpen,
+    onChange,
     onClose,
     onSubmit,
     textFieldData,
@@ -21,17 +23,8 @@ const FormDialog = (props) => {
     text,
   } = props;
 
-  const [ inputValues, setInputValues ] = useState();
-
-  const onCloseDialog = () => {
-    onClose();
-    setInputValues({});
-  };
-
-  const onChangeInputValue = event => setInputValues({
-    ...inputValues,
-    [event.target.name]: event.target.value,
-  });
+  const onChangeInputValue = (event) =>
+    onChange(event.target.name, event.target.value);
 
   const textFields = textFieldData.map((item, index) => {
     const {
@@ -53,7 +46,7 @@ const FormDialog = (props) => {
         onChange={onChangeInputValue}
         required={required}
         type="text"
-        value={(inputValues && inputValues.name) || value}
+        value={value}
       />
     );
   });
@@ -61,7 +54,7 @@ const FormDialog = (props) => {
   return (
     <Dialog
       aria-labelledby="form-dialog-title"
-      onClose={onCloseDialog}
+      onClose={onClose}
       open={isOpen}
     >
       <DialogTitle id="form-dialog-title">{title}</DialogTitle>
@@ -70,14 +63,13 @@ const FormDialog = (props) => {
         {textFields}
       </DialogContent>
       <DialogActions>
-        <Button color="primary" onClick={onCloseDialog}>Cancel</Button>
+        <Button color="primary" onClick={onClose}>Cancel</Button>
       <Button
         color="primary"
-        // TODO: Modify the logic to not force all fields to be required
-        disabled={!inputValues || Object.values(inputValues).includes('')}
+        disabled={disabled}
         onClick={() => {
           onClose();
-          onSubmit(inputValues);
+          onSubmit();
         }}
       >
         Submit

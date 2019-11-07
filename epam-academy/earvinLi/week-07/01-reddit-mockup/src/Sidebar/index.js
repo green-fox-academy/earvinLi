@@ -9,7 +9,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 // Internal Dependencies
 import { getSidebarStyles } from '../App/Styles';
-import { openPostAddEditDialog } from '../UserInteraction/action';
+import { openPostAddEditDialog } from '../UserInteraction/action/PostAddEditDialogAction';
 
 // Local Variables
 const useStyles = makeStyles(theme => getSidebarStyles(theme));

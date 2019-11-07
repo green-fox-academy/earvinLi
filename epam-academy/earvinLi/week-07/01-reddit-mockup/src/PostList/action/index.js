@@ -1,8 +1,8 @@
 // Internal Dependencies
-// import { createActionCreator } from '../../App/RootUtilities';
 import {
   ADD_POST,
   DELETE_POST,
+  EDIT_POSTS,
   FETCH_POSTS,
   VOTE_POST,
 } from '../../App/ActionTypes';
@@ -27,6 +27,17 @@ export const deletePost = (postId) => async (dispatch) => {
   const deletedPost = await deletedPostJSON.json();
 
   dispatch({ type: DELETE_POST, deletedPost });
+};
+
+export const editPost = (post, postId) => async (dispatch) => {
+  const editedPostJSON = await fetch(`http://localhost:8081/posts/${postId}`, {
+    body: JSON.stringify(post),
+    method: 'PUT',
+    headers: { 'content-type': 'application/json' },
+  });
+  const editedPost = await editedPostJSON.json();
+
+  dispatch({ type: EDIT_POSTS, editedPost });
 };
 
 export const fetchPosts = () => async (dispatch) => {

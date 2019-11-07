@@ -21,7 +21,7 @@ import {
   deletePost,
   votePost,
 } from './action';
-import { openPostAddEditDialog } from '../UserInteraction/action';
+import { openPostAddEditDialog } from '../UserInteraction/action/PostAddEditDialogAction';
 
 // Local Variables
 const useStyles = makeStyles(theme => getPostListItemStyles(theme));
@@ -74,7 +74,7 @@ const PostListItem = (props) => {
         <TooltippedIconButton
           arialLabel='modify'
           edge='end'
-          onClick={() => onOpenPostAddEditDialog('edit', id)}
+          onClick={() => onOpenPostAddEditDialog(id)}
           title="Modify"
         >
           <EditIcon className={iconStyle} />
