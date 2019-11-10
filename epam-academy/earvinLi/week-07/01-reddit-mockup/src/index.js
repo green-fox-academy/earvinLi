@@ -16,7 +16,7 @@ import {
 } from '@material-ui/core/styles';
 
 // Internal Dependencies
-import App from './App';
+import App from './App/App';
 import AppReducer from './App/AppReducer';
 
 // Redux Configuration
