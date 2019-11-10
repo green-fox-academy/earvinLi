@@ -2,11 +2,11 @@
 const PostDeleteRouter = require('express').Router();
 
 // Internal Dependencies
-const mysqlConnection = require('./Database');
+const mysqlConnection = require('../Database');
 const {
   mysqlPromisedQuery,
   selectLastInsertRow,
-} = require('./RootUtilities');
+} = require('../RootUtilities');
 
 // DELETE endpoint to delete a post
 PostDeleteRouter.delete('/:id', async (req, res) => {

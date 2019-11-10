@@ -2,8 +2,8 @@
 const PostPutRouter = require('express').Router();
 
 // Internal Dependencies
-const mysqlConnection = require('./Database');
-const { mysqlPromisedQuery } = require('./RootUtilities');
+const mysqlConnection = require('../Database');
+const { mysqlPromisedQuery } = require('../RootUtilities');
 
 // PUT Endpoint to find a post by its id and upvote or downvote its score
 PostPutRouter.put('/:id', async (req, res) => {
@@ -20,7 +20,6 @@ PostPutRouter.put('/:id', async (req, res) => {
     `;
   } else {
     const { title, url } = req.body;
-    console.log(title, url);
     queryStatement = `
       UPDATE post
       SET title = '${title}', url = '${url}'

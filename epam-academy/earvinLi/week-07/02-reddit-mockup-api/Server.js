@@ -4,10 +4,10 @@ const cors = require('cors');
 const express = require('express');
 
 // Internal Dependencies
-const PostGetRouter = require('./PostGetRouter');
-const PostPostRouter = require('./PostPostRouter');
-const PostPutRouter = require('./PostPutRouter');
-const PostDeleteRouter = require('./PostDeleteRouter');
+const PostDeleteRouter = require('./PostRouters/PostDeleteRouter');
+const PostGetRouter = require('./PostRouters/PostGetRouter');
+const PostPostRouter = require('./PostRouters/PostPostRouter');
+const PostPutRouter = require('./PostRouters/PostPutRouter');
 
 // Local Variables
 const PORT = process.env.PORT;

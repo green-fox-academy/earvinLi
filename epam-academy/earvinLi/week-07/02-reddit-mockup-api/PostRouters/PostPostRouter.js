@@ -2,11 +2,11 @@
 const PostPostRouter = require('express').Router();
 
 // Internal Dependencies
-const mysqlConnection = require('./Database');
+const mysqlConnection = require('../Database');
 const {
   mysqlPromisedQuery,
   selectLastInsertRow,
-} = require('./RootUtilities');
+} = require('../RootUtilities');
 
 // POST endpoint to add a new post
 PostPostRouter.post('/', async (req, res) => {

@@ -2,11 +2,11 @@
 const PostGetRouter = require('express').Router();
 
 // Internal Dependencies
-const mysqlConnection = require('./Database');
+const mysqlConnection = require('../Database');
 const {
   mysqlPromisedQuery,
   selectLastInsertRow,
-} = require('./RootUtilities');
+} = require('../RootUtilities');
 
 // GET endpoint to get all the posts
 PostGetRouter.get('/', async (req, res) => {
