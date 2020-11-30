@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>Exercise 2</title>
+    <title>Account Login</title>
     <style media="screen">
       a {
         align-self: flex-end;
@@ -100,7 +100,7 @@
     const usernameError = document.querySelector('#usernameError');
 
     form.addEventListener('submit', (event) => {
-      if (username.value === '') {
+      if (!username.validity.valid) {
         usernameError.innerHTML = 'I expect a username, darling!';
       }
 

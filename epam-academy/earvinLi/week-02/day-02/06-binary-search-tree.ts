@@ -1,3 +1,10 @@
+// Idea from:
+// https://www.geeksforgeeks.org/implementation-binary-search-tree-javascript/
+// and
+// https://www.tutorialspoint.com/data_structures_algorithms/tree_data_structure.htm
+// and
+// http://www.algolist.net/Data_structures/Binary_search_tree/Removal
+
 interface Tree {
   // empty(): boolean;
   add(value: number): void;
@@ -8,25 +15,21 @@ interface Tree {
 class BinaryTreeNode {
   left;
   right;
-  parent;
   value: number;
 
 
   constructor(value) {
     this.left = null;
     this.right = null;
-    // this.parent = null;
     this.value = value;
   }
 }
 
 class BinaryTree implements Tree {
   root;
-  // level: number;
 
   constructor() {
     this.root = null;
-    // this.level = 0;
   }
 
   remove(value: number) {
@@ -37,24 +40,21 @@ class BinaryTree implements Tree {
     if (node === null) {
       throw 'Empty tree. Nothing to remove.';
     } else if (key < node.value) {
-      node.left = this.removeNode(node.left, key);
-      return node;
+      return node.left = this.removeNode(node.left, key);
     } else if (key > node.value) {
-      node.right = this.removeNode(node.right, key);
-      return node;
+      return node.right = this.removeNode(node.right, key);
     } else {
       if (node.left === null && node.right === null) {
         node = null;
-        return node;
       }
 
       if (node.left === null) {
         node = node.right;
-        return node;
       } else if (node.right === null) {
         node = node.left;
-        return node;
       }
+
+
     }
   }
 
@@ -80,8 +80,6 @@ class BinaryTree implements Tree {
     if (this.root === null) {
       this.root = binaryTreeNodeToAdd;
     } else {
-      // binaryTreeNodeToAdd.parent = currentBinaryTreeNode;
-
       let currentBinaryTreeNode = this.root;
       let parentBinaryTreeNode = null;
 
@@ -104,8 +102,6 @@ class BinaryTree implements Tree {
         }
       }
     }
-
-    // this.level++;
   }
 }
 
