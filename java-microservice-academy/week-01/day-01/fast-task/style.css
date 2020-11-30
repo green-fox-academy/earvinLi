@@ -1,0 +1,28 @@
+html, body {
+  height: 100%;
+}
+
+#container {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  left: 25%;
+  position: absolute;
+  top: 25%;
+}
+
+#catOrbit {
+  position: absolute;
+}
+
+#cat {
+  height: 96px;
+  position: absolute;
+  width: 96px;
+}
+
+#hat {
+  height: 96px;
+  position: absolute;
+  width: 96px;
+}
