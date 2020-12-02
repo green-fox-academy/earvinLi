@@ -1,4 +1,4 @@
-public class CompareLength {
+public class Third {
   public static void main(String[] args) {
     // - Create an array variable named `firstArrayOfNumbers`
     //   with the following content: `[1, 2, 3]`
