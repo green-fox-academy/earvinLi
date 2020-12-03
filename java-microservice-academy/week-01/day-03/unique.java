@@ -11,7 +11,7 @@ public class Unique {
   }
 
   public static ArrayList unique(int[] targetArr) {
-    ArrayList resultArr = new ArrayList();
+    ArrayList<Integer> resultArr = new ArrayList<>();
 
     for (int i = 0; i < targetArr.length; i++) {
       boolean alreadyExists = resultArr.contains(targetArr[i]);

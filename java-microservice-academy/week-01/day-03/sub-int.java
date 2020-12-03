@@ -14,7 +14,7 @@ public class SubInt {
   }
 
   public static ArrayList subInt(int targetNum, int[] targetArr) {
-    ArrayList resultArr = new ArrayList();
+    ArrayList<Integer> resultArr = new ArrayList<>();
 
     boolean isMatched = false;
     for (int i = 0; i < targetArr.length; i++) {
