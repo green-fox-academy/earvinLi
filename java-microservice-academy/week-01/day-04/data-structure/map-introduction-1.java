@@ -1,6 +1,6 @@
 import java.util.HashMap;
 
-public class ListIntroduction1 {
+public class MapIntroduction1 {
   public static void main(String... args) {
     HashMap<Integer, Character> map = new HashMap<>();
     System.out.println(map.isEmpty());
