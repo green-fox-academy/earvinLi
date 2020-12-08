@@ -1,4 +1,4 @@
-package garden_application;
+package week_02.day_01.garden_application;
 
 public class Main {
   public static void main (String ...args) {

@@ -1,4 +1,4 @@
-package aircraft_carrier;
+package week_02.day_01.aircraft_carrier;
 
 import java.util.ArrayList;
 

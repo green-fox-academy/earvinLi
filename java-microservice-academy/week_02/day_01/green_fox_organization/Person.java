@@ -1,4 +1,4 @@
-package green_fox_organization;
+package week_02.day_01.green_fox_organization;
 
 public class Person {
   String name;

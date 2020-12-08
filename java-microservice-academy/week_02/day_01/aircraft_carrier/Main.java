@@ -1,4 +1,4 @@
-package aircraft_carrier;
+package week_02.day_01.aircraft_carrier;
 
 public class Main {
   public static void main (String ...args) throws Exception {
