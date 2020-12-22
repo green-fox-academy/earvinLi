@@ -1,3 +1,5 @@
+package week_01.day_03;
+
 import java.util.Arrays;
 
 public class Colors {

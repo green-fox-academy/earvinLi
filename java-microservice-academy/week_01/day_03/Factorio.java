@@ -1,3 +1,5 @@
+package week_01.day_03;
+
 public class Factorio {
   public static void main(String[] args) {
     // - Create a function called `factorio`

@@ -1,3 +1,5 @@
+package week_01.day_02;
+
 public class HumptyDumpty {
   public static void main(String[] args) {
     // Modify this program to print Humpty Dumpty riddle correctly

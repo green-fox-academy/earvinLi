@@ -1,3 +1,5 @@
+package week_01.day_03;
+
 public class Greet {
   public static void main(String[] args) {
     // - Create a string variable named `al` and assign the value `Green Fox` to it

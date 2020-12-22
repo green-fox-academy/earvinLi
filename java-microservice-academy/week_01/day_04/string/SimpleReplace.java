@@ -1,3 +1,5 @@
+package week_01.day_04.string;
+
 public class SimpleReplace {
   public static void main(String... args){
     String example = "In a dishwasher far far away";

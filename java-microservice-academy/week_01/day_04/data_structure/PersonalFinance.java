@@ -1,8 +1,10 @@
+package week_01.day_04.data_structure;
+
 import java.util.Arrays;
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class Main {
+public class PersonalFinance {
   public static void main(String... args) {
     ArrayList<Integer> expenses = new ArrayList<>();
     expenses.addAll(Arrays.asList(500, 1000, 1250, 175, 800, 120));

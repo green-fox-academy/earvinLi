@@ -1,4 +1,6 @@
-public class UrlFixer {
+package week_01.day_04.string;
+
+public class URLFixer {
   public static void main(String... args) {
     String url = "https//www.reddit.com/r/nevertellmethebots";
 

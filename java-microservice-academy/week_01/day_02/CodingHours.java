@@ -1,3 +1,5 @@
+package week_01.day_02;
+
 public class CodingHours {
   public static void main(String[] args) {
         // An average Green Fox attendee codes 6 hours daily

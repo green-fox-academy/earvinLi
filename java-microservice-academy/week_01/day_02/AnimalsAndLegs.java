@@ -1,3 +1,5 @@
+package week_01.day_02;
+
 import java.util.Scanner;
 
 public class AnimalsAndLegs {

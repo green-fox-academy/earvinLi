@@ -1,4 +1,4 @@
-package post_it;
+package week_01.day_05.post_it;
 
 public class Main {
   public static void main(String... args){

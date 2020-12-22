@@ -1,3 +1,5 @@
+package week_01.day_03;
+
 public class AppendAFunc {
   public static void main(String[] args) {
     // - Create a string variable named `typo` and assign the value `Chinchill` to it

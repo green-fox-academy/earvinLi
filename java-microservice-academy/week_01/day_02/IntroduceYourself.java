@@ -1,3 +1,5 @@
+package week_01.day_02;
+
 public class IntroduceYourself {
   public static void main(String[] args) {
         // Write a program that prints a few details to the terminal window about you

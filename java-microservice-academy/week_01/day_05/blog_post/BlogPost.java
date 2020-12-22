@@ -1,4 +1,4 @@
-package blog_post;
+package week_01.day_05.blog_post;
 
 public class BlogPost {
   String authorName;

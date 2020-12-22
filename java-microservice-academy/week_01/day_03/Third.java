@@ -1,3 +1,5 @@
+package week_01.day_03;
+
 public class Third {
   public static void main(String[] args) {
     // - Create an array variable named `firstArrayOfNumbers`

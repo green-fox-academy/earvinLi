@@ -1,3 +1,5 @@
+package week_01.day_04.string;
+
 public class TodoPrint {
   public static void main(String... args){
     String todoText = " - Buy milk\n";

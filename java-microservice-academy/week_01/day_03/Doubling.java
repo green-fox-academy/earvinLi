@@ -1,3 +1,5 @@
+package week_01.day_03;
+
 public class Doubling {
   public static void main(String[] args) {
     // - Create an integer variable named `baseNum` and assign the value `123` to it

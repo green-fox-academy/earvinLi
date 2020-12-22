@@ -1,3 +1,5 @@
+package week_01.day_04.data_structure;
+
 import java.util.HashMap;
 
 public class MapIntroduction1 {
@@ -25,4 +27,5 @@ public class MapIntroduction1 {
     System.out.println(map.containsKey(100));
 
     map.clear();
+  }
 }

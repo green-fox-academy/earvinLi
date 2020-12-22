@@ -1,3 +1,5 @@
+package week_01.day_02;
+
 public class Cuboid {
   public static void main(String[] args) {
       // Write a program that stores 3 sides of a cuboid as variables (doubles)

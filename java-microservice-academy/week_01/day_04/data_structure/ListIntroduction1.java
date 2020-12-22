@@ -1,3 +1,5 @@
+package week_01.day_04.data_structure;
+
 import java.util.ArrayList;
 import java.util.Collections;
 
