@@ -13,7 +13,10 @@
     src="./green-fox.png"
     th:style="'width: 200px; height: 200px;'"
   >
-  <p>This is <span th:text="${foxName} ? ${foxName} : 'Mr. Fox'"></span>. Currently living on pizza and lemonade. He knows 2 tricks.</p>
+  <p>
+    This is <span th:text="${loggedInFox.getName()} ? ${loggedInFox.getName()} : 'Mr. Fox'"></span>.
+    &nbsp;Currently living on pizza and lemonade. He knows 2 tricks.
+  </p>
   <h2>Known tricks</h2>
   <ul>
     <li>write HTML</li>

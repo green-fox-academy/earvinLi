@@ -1,13 +1,24 @@
 package com.jma.programmer_fox_club.services;
 
+import repositories.FoxRepository;
 import com.jma.programmer_fox_club.models.Fox;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class FoxService {
-  @Autowired
-  public FoxService() {}
+  private FoxRepository foxRepository;
 
-  public Fox addAFox(String foxName) {
-    return new Fox(foxName);
+  @Autowired
+  public FoxService(FoxRepository foxRepository) {
+    this.foxRepository = foxRepository;
+  }
+
+  public void addAFox(Fox foxToAdd) {
+    this.foxRepository.addAFoxToFoxes(foxToAdd);
+  }
+
+  public Fox findAFox(String foxName) {
+    return this.foxRepository.findAFoxFromFoxes(foxName);
   }
 }

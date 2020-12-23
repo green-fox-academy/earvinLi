@@ -17,7 +17,7 @@ public class LoginController {
     this.foxService = foxService;
   }
 
-  @RequestMapping(value = "/login", method = RequestMethod.GET)
+  @RequestMapping(value = {"/", "/login"}, method = RequestMethod.GET)
   public String showLoginPage(Model model) {
     model.addAttribute("fox", new Fox("Mr. Fox"));
     return "login";
@@ -25,6 +25,7 @@ public class LoginController {
 
   @RequestMapping(value = "/login", method = RequestMethod.POST)
   public String postName(Fox fox) {
-    return "redirect:/main?foxName=" + fox.getName();
+    this.foxService.addAFox(fox);
+    return "redirect:/information?foxName=" + fox.getName();
   }
 }
