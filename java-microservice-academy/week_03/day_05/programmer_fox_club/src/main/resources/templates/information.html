@@ -6,7 +6,9 @@
 </head>
 <body>
   <ul>
-    <li><a href="">Information</a></li>
+    <li><a th:href="'/information?foxName=' + ${loggedInFox.getName()}">Information</a></li>
+    <li><a th:href="'/nutrition-store?foxName=' + ${loggedInFox.getName()}">Nutrition Store</a></li>
+    <li><a th:href="'/trick_center?foxName=' + ${loggedInFox.getName()}">Trick Center</a></li>
   </ul>
   <img
     alt=""
@@ -15,7 +17,8 @@
   >
   <p>
     This is <span th:text="${loggedInFox.getName()} ? ${loggedInFox.getName()} : 'Mr. Fox'"></span>.
-    &nbsp;Currently living on pizza and lemonade. He knows 2 tricks.
+    &nbsp;Currently living on <span th:text="${loggedInFox.getFood()}"></span> and <span th:text="${loggedInFox.getDrink()}"></span>.
+    &nbsp;He knows 2 tricks.
   </p>
   <h2>Known tricks</h2>
   <ul>

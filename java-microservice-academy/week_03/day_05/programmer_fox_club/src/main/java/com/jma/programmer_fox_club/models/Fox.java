@@ -19,8 +19,28 @@ public class Fox {
   public String getName() {
     return name;
   }
-
   public void setName(String name) {
     this.name = name;
+  }
+
+  public List<Object> getTricks() {
+    return tricks;
+  }
+  public void setTricks(List<Object> tricks) {
+    this.tricks = tricks;
+  }
+
+  public String getFood() {
+    return food;
+  }
+  public void setFood(String food) {
+    this.food = food;
+  }
+
+  public String getDrink() {
+    return drink;
+  }
+  public void setDrink(String drink) {
+    this.drink = drink;
   }
 }
