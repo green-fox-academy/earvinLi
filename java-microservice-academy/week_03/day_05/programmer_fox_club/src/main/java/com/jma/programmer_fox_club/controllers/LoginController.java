@@ -1,20 +1,30 @@
 package com.jma.programmer_fox_club.controllers;
 
+import com.jma.programmer_fox_club.models.Fox;
+import com.jma.programmer_fox_club.services.FoxService;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
-@RequestMapping("/login")
 public class LoginController {
-  @GetMapping()
-  public String showLoginPage() {
+  private FoxService foxService;
+
+  @Autowired
+  public LoginController(FoxService foxService) {
+    this.foxService = foxService;
+  }
+
+  @RequestMapping(value = "/login", method = RequestMethod.GET)
+  public String showLoginPage(Model model) {
+    model.addAttribute("fox", new Fox("Mr. Fox"));
     return "login";
   }
 
-  @PostMapping()
-  public String postName() {
-    return "login";
+  @RequestMapping(value = "/login", method = RequestMethod.POST)
+  public String postName(Fox fox) {
+    return "redirect:/main?foxName=" + fox.getName();
   }
 }
