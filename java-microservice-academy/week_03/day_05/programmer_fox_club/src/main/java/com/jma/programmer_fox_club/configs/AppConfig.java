@@ -5,7 +5,7 @@ import org.springframework.context.annotation.Configuration;
 
 
 import com.jma.programmer_fox_club.services.FoxService;
-import repositories.FoxRepository;
+import com.jma.programmer_fox_club.repositories.FoxRepository;
 
 @Configuration
 public class AppConfig {

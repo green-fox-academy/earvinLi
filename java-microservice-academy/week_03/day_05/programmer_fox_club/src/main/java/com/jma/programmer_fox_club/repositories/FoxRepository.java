@@ -1,4 +1,4 @@
-package repositories;
+package com.jma.programmer_fox_club.repositories;
 
 import java.util.ArrayList;
 import java.util.List;

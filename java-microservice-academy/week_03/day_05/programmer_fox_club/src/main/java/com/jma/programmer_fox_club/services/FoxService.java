@@ -1,9 +1,10 @@
 package com.jma.programmer_fox_club.services;
 
-import repositories.FoxRepository;
-import com.jma.programmer_fox_club.models.Fox;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.jma.programmer_fox_club.repositories.FoxRepository;
+import com.jma.programmer_fox_club.models.Fox;
 
 @Service
 public class FoxService {
