@@ -1,10 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
   <title>Title</title>
 </head>
 <body>
-
+  <h2>Known tricks: </h2>
+  <ul>
+    <li
+      th:each="foxTrick : ${foxTricks}"
+      th:text="${foxTrick}"
+    ></li>
+  </ul>
+  <h2>Want to learn a new one?</h2>
+  <form th:action="trick-center" method="post">
+    <span>Trick: </span>
+    <select name="foxTrick">
+      <option value="ride a horse">ride a horse</option>
+      <option value="do kung fu">do kung fu</option>
+      <option value="drink as many beers as possible">drink as many beers as possible</option>
+    </select>
+    <input type="submit" value="Learn">
+  </form>
 </body>
 </html>

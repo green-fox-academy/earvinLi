@@ -8,7 +8,7 @@
   <ul>
     <li><a th:href="'/information?foxName=' + ${loggedInFox.getName()}">Information</a></li>
     <li><a th:href="'/nutrition-store?foxName=' + ${loggedInFox.getName()}">Nutrition Store</a></li>
-    <li><a th:href="'/trick_center?foxName=' + ${loggedInFox.getName()}">Trick Center</a></li>
+    <li><a th:href="'/trick-center?foxName=' + ${loggedInFox.getName()}">Trick Center</a></li>
   </ul>
   <img
     alt=""
@@ -22,8 +22,10 @@
   </p>
   <h2>Known tricks</h2>
   <ul>
-    <li>write HTML</li>
-    <li>code in Java</li>
+    <li
+      th:each="foxTrick : ${loggedInFox.getTricks()}"
+      th:text="${foxTrick}"
+    ></li>
   </ul>
 </body>
 </html>

@@ -1,5 +1,6 @@
 package com.jma.programmer_fox_club.models;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -11,7 +12,7 @@ public class Fox {
 
   public Fox(String name) {
     this.name = name;
-    this.tricks = Arrays.asList("write HTML", "code in Java");
+    this.tricks = new ArrayList<>(Arrays.asList("write HTML", "code in Java"));
     this.food = "salad";
     this.drink = "water";
   }
@@ -26,8 +27,8 @@ public class Fox {
   public List<Object> getTricks() {
     return tricks;
   }
-  public void setTricks(List<Object> tricks) {
-    this.tricks = tricks;
+  public void addTrick(String trickToAdd) {
+    this.tricks.add(trickToAdd);
   }
 
   public String getFood() {
