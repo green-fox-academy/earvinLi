@@ -1,5 +1,6 @@
 package week_03.day_01;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.function.Predicate;
@@ -19,7 +20,8 @@ public class StreamExercise {
     List<Integer> numberListThree = Arrays.asList(5, 9, 1, 2, 3, 7, 5, 6, 7, 3, 7, 6, 8, 5, 4, 9, 6, 2);
 
     // example strings
-    String stringOne = "eArViN";
+    // for exercises 6, 9
+    String stringOne = "eArViNearveee";
     Stream<Character> exampleChars = Stream.of('E', 'a', 'r', 'v', 'i', 'n');
 
 
@@ -43,8 +45,12 @@ public class StreamExercise {
     // exercise 5 - sum of the odd numbers
     System.out.println(numberListThree.stream().filter(isOdd).mapToInt(Integer::intValue).summaryStatistics().getSum());
 
-    // exercise 6 - sum of the odd numbers
-    System.out.println(stringOne);
+    // exercise 6 - the uppercase characters in a string
+    System.out.println(
+        Stream.of(stringOne.split(""))
+            .filter(character -> Character.isUpperCase(character.charAt(0)))
+            .collect(Collectors.toList())
+    );
 
     // exercise 7 - strings which starts with a given letter
     System.out.println(searchByFirstLetter("A"));
@@ -57,6 +63,24 @@ public class StreamExercise {
       StringBuilder::toString
     )) + " is swimming in this wild sea of Java Stream API!! Hope could survive...");
 
+    // exercise 9 - the frequency of characters in a given string
+    System.out.println(findLetterFrequency('e', stringOne));
+
+    // exercise 10
+    List<Fox> foxes = new ArrayList<>();
+    foxes.add(new Fox("Earvin1", "red", 1));
+    foxes.add(new Fox("Earvin2", "green", 2));
+    foxes.add(new Fox("Earvin3", "green", 6));
+    foxes.add(new Fox("Earvin4", "blue", 3));
+
+    // foxes with green color
+    List<Fox> targetFoxGroup1 = foxes.stream().filter(fox -> fox.color.equals("green")).collect(Collectors.toList());
+    targetFoxGroup1.forEach(fox -> System.out.println(fox.name));
+    // foxes with green color, and age less then 5 years
+    List<Fox> targetFoxGroup2 = foxes.stream().filter(fox -> fox.color.equals("green") && fox.age < 5).collect(Collectors.toList());
+    targetFoxGroup2.forEach(fox -> System.out.println(fox.name));
+    // frequency of foxes by color
+    System.out.println(foxes.stream().filter(fox -> fox.color.equals("green")).count());
   }
 
   public static Integer toSquare(Integer inputNumber) {
@@ -68,5 +92,21 @@ public class StreamExercise {
       "ROME", "LONDON", "NAIROBI", "CALIFORNIA", "ZURICH", "NEW DELHI", "AMSTERDAM", "ABU DHABI", "PARIS"
     );
     return cities.stream().filter(city -> city.startsWith(firstLetter)).collect(Collectors.toList());
+  }
+
+  public static long findLetterFrequency(char targetLetter, String inputString) {
+    return Stream.of(inputString.split("")).filter(character -> character.charAt(0) == targetLetter).count();
+  }
+
+  private static class Fox {
+    String name;
+    String color;
+    int age;
+
+    public Fox(String name, String color, int age) {
+      this.name = name;
+      this.color = color;
+      this.age = age;
+    }
   }
 }
