@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Photos</title>
+</head>
+<body>
+  <h1>View Photo</h1>
+  Title: <span th:text="${title}">name</span>
+  <img th:alt="${title}" th:src="*{'data:image/png;base64,'+image}" />
+</body>
+</html>
