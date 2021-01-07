@@ -1,4 +1,4 @@
-package finder;
+package com.greenfox.finder;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
