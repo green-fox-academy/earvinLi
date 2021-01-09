@@ -1,5 +1,6 @@
 package com.jma.sensordataprocessor.controllers;
 
+import com.jma.sensordataprocessor.models.Location;
 import com.jma.sensordataprocessor.models.Sensor;
 import com.jma.sensordataprocessor.models.Weather;
 import com.jma.sensordataprocessor.services.MessageService;
@@ -32,6 +33,12 @@ public class WeatherController {
     sensorsFound.forEach(sensor -> {
       Weather weatherToUpdate = weatherService.getWeather(sensor.getLat(), sensor.getLon());
       weatherToUpdate.setParentSensorId(sensor.getId());
+
+      Location weatherLocation = sensor.getLocation();
+      boolean overThresh = weatherToUpdate.getTemperature() < weatherLocation.getTempThresh()
+        || weatherToUpdate.getWindSpeed() > weatherLocation.getSpeedThresh()
+        || weatherToUpdate.getHumidity() > weatherLocation.getHumidThresh();
+      if (overThresh) messageService.sendSendEmailMessage(weatherLocation.getUsersSubscribed());
       messageService.sendStoreWeatherMessage(weatherToUpdate);
     });
     return "sensors all send new data";

@@ -1,10 +1,7 @@
 package com.jma.sensordataprocessor.configs;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.jma.sensordataprocessor.handlers.MessageHandler;
-import com.jma.sensordataprocessor.repositories.SensorRepository;
-import com.jma.sensordataprocessor.services.SensorService;
-import com.jma.sensordataprocessor.services.WeatherService;
+import com.jma.sensordataprocessor.messageHandlers.SendEmailHandler;
+import com.jma.sensordataprocessor.messageHandlers.StoreWeatherHandler;
 import org.springframework.amqp.core.Queue;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Bean;
@@ -31,7 +28,12 @@ public class AppConfig {
   }
 
   @Bean
-  public MessageHandler messageHandler() {
-    return new MessageHandler();
+  public StoreWeatherHandler storeWeatherMessageHandler() {
+    return new StoreWeatherHandler();
+  }
+
+  @Bean
+  public SendEmailHandler sendEmailMessageHandler() {
+    return new SendEmailHandler();
   }
 }
